@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-sage-500 font-body text-soya-900 antialiased;
+  }
+
+  /* Offset anchor scroll supaya heading section tidak ketutup navbar sticky */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  ::selection {
+    @apply bg-gold-300 text-soya-900;
+  }
+}
+
+@layer components {
+  /* Container standar section */
+  .section-shell {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* ── Micro-interactions ──────────────────────────────────────────── */
+
+/* Scroll-reveal: elemen muncul naik + fade saat masuk viewport (lihat Reveal.jsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Elemen dekoratif melayang pelan (maskot, cup, kedelai) */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--float-rot, 0deg));
+  }
+  50% {
+    transform: translateY(-14px) rotate(var(--float-rot, 0deg));
+  }
+}
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-float,
+  .animate-float-slow {
+    animation: none;
+  }
+}
