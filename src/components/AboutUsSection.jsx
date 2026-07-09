@@ -143,6 +143,36 @@ export default function AboutUsSection() {
             </Reveal>
           ))}
         </div>
+
+        {/* Versi mobile/tablet dari cup + gelas pojok kanan-bawah, kedelai menabur dari atas */}
+        <Reveal className="lg:hidden" delay={160}>
+          <div className="relative ml-auto mt-10 w-36 pt-14 sm:w-44 sm:pt-16">
+            <img
+              src={kedelai}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              style={pourMask}
+              className="absolute -top-2 right-4 w-24 -rotate-3 opacity-95 sm:w-28"
+            />
+            <div className="relative flex items-end justify-end">
+              <img
+                src={gelas}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="w-16 -rotate-6 drop-shadow-2xl sm:w-20"
+              />
+              <img
+                src={cup}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="animate-float-slow -ml-3 w-20 rotate-3 drop-shadow-2xl sm:w-24"
+              />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   )
