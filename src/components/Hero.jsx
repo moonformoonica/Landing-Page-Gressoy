@@ -1,23 +1,24 @@
-import { CONTACT } from '../data/contact.js'
-import Reveal from './Reveal.jsx'
-import VideoShowcase from './VideoShowcase.jsx'
-import { WhatsappIcon } from './icons.jsx'
-import mascot from '../assets/mascot.png'
-import kedelai from '../assets/kedelai.png'
+import { CONTACT } from "../data/contact.js";
+import Reveal from "./Reveal.jsx";
+import VideoShowcase from "./VideoShowcase.jsx";
+import { WhatsappIcon } from "./icons.jsx";
+import mascot from "../assets/mascot.png";
+import kedelai from "../assets/kedelai.png";
 
 // Mask lembut supaya taburan kedelai memudar di tepinya.
 const softMask = {
-  maskImage: 'radial-gradient(ellipse at center, #000 38%, transparent 78%)',
-  WebkitMaskImage: 'radial-gradient(ellipse at center, #000 38%, transparent 78%)',
-}
+  maskImage: "radial-gradient(ellipse at center, #000 38%, transparent 78%)",
+  WebkitMaskImage:
+    "radial-gradient(ellipse at center, #000 38%, transparent 78%)",
+};
 
 // Maskot memudar di sisi bawah supaya menyatu dengan background dan tidak
 // terlihat terpotong keras di tepi bawah section. (Flip horizontal tidak
 // memengaruhi fade vertikal ini, jadi aman dipakai kedua maskot.)
 const mascotFade = {
-  maskImage: 'linear-gradient(to bottom, #000 52%, transparent 94%)',
-  WebkitMaskImage: 'linear-gradient(to bottom, #000 52%, transparent 94%)',
-}
+  maskImage: "linear-gradient(to bottom, #000 52%, transparent 94%)",
+  WebkitMaskImage: "linear-gradient(to bottom, #000 52%, transparent 94%)",
+};
 
 /**
  * Hero: tiga video suasana di atas, lalu headline serif gold
@@ -48,7 +49,13 @@ export default function Hero() {
           Float ditaruh di wrapper, flip di <img>, supaya animasi tidak
           menimpa transform flip. */}
       <div className="animate-float-slow pointer-events-none absolute bottom-0 left-0 hidden lg:block">
-        <img src={mascot} alt="" aria-hidden="true" style={mascotFade} className="w-56 -scale-x-100 xl:w-72" />
+        <img
+          src={mascot}
+          alt=""
+          aria-hidden="true"
+          style={mascotFade}
+          className="w-56 -scale-x-100 xl:w-72"
+        />
       </div>
       <div className="animate-float-slow pointer-events-none absolute bottom-0 right-0 hidden lg:block">
         <img
@@ -79,8 +86,9 @@ export default function Hero() {
 
           <Reveal delay={220}>
             <p className="max-w-xl text-base text-cream-50/90 sm:text-lg">
-              Susu kedelai premium sejak 2019, hadir dalam 16 varian rasa dengan pemanis alami rendah kalori,
-              segar, higienis, alami, dan ramah untuk kamu yang intoleran laktosa.
+              Susu kedelai premium sejak 2019, hadir dalam 16 varian rasa dengan
+              pemanis alami rendah kalori, segar, higienis, alami, dan ramah
+              untuk kamu yang intoleran laktosa.
             </p>
           </Reveal>
 
@@ -106,5 +114,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
