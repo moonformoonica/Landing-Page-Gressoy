@@ -13,7 +13,7 @@ export const LOCATION = {
   ],
   rating: 5.0,
   reviewCount: 354,
-  hours: "08.00 – 22.00 WIB, setiap hari",
+  hours: "08.00 – 22.00 WIB, setiap hari Senin-Sabtu",
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Gressoy+Jl.+Kolonel+Sugiono+No.34+Purwokerto",
   embedSrc:

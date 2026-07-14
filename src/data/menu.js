@@ -256,4 +256,10 @@ export const MENU = [
     description: "Puding susu kedelai lembut",
     flatPrice: "15K",
   },
+  {
+    category: "dessert",
+    name: "Vegan Cookies Peanut",
+    description: "Cookies vegan kacang, tanpa telur, susu, maupun mentega",
+    flatPrice: "40K",
+  },
 ];
