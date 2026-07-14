@@ -79,13 +79,13 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={120}>
-            <h1 className="font-display text-5xl font-black leading-tight text-gold-300 drop-shadow-md sm:text-6xl lg:text-7xl">
+            <h1 className="font-display text-xl font-black leading-tight text-gold-300 drop-shadow-md sm:text-6xl lg:text-7xl">
               Dijamin 100% tidak langu!
             </h1>
           </Reveal>
 
           <Reveal delay={111}>
-            <p className="max-w-xl text-base text-cream-50/90 sm:text-lg">
+            <p className="max-w-xl text-pretty text-base text-cream-50/90 sm:text-lg">
               Susu kedelai premium sejak 2019, hadir dalam 16 varian rasa dengan
               pemanis alami rendah kalori, segar, higienis, alami, dan ramah
               untuk kamu yang intoleran laktosa.
