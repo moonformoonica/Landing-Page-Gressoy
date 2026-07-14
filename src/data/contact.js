@@ -14,8 +14,8 @@ export const LOCATION = {
   rating: 5.0,
   reviewCount: 354,
   hours: "08.00 – 22.00 WIB, setiap hari Senin-Sabtu",
-  mapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Gressoy+Jl.+Kolonel+Sugiono+No.34+Purwokerto",
+  embedSrc:
+    "https://www.google.com/maps?q=Gressoy,+Jl.+Kolonel+Sugiono+No.34,+Tipar,+Purwanegara,+Kec.+Purwokerto+Tim.,+Kabupaten+Banyumas,+Jawa+Tengah+53116&output=embed"
 };
 
 export const CONTACT = {
