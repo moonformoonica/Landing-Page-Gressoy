@@ -1,8 +1,13 @@
-import SectionHeading from './SectionHeading.jsx'
-import MapEmbed from './MapEmbed.jsx'
-import Reveal from './Reveal.jsx'
-import { InstagramIcon, TiktokIcon, WhatsappIcon, GmapsIcon } from './icons.jsx'
-import { CONTACT, LOCATION } from '../data/contact.js'
+import SectionHeading from "./SectionHeading.jsx";
+import MapEmbed from "./MapEmbed.jsx";
+import Reveal from "./Reveal.jsx";
+import {
+  InstagramIcon,
+  TiktokIcon,
+  WhatsappIcon,
+  GmapsIcon,
+} from "./icons.jsx";
+import { CONTACT, LOCATION } from "../data/contact.js";
 
 export default function ContactSection() {
   return (
@@ -29,14 +34,20 @@ export default function ContactSection() {
         <div className="grid gap-5 sm:grid-cols-3">
           {[
             {
-              title: 'Jam Operasional',
-              body: <p className="mt-2 text-sm text-soya-800/80">{LOCATION.hours}</p>,
+              title: "Jam Operasional",
+              body: (
+                <p className="mt-2 text-sm text-soya-800/80">
+                  {LOCATION.hours}
+                </p>
+              ),
             },
             {
-              title: 'Hubungi Kami',
+              title: "Hubungi Kami",
               body: (
                 <>
-                  <p className="mt-2 text-sm text-soya-800/80">{CONTACT.whatsapp.display}</p>
+                  <p className="mt-2 text-sm text-soya-800/80">
+                    {CONTACT.whatsapp.display}
+                  </p>
                   <a
                     href={CONTACT.whatsapp.url}
                     target="_blank"
@@ -50,7 +61,7 @@ export default function ContactSection() {
               ),
             },
             {
-              title: 'Sosial Media',
+              title: "Sosial Media",
               body: (
                 <div className="mt-3 flex flex-col items-center gap-2.5 text-sm">
                   <a
@@ -86,7 +97,9 @@ export default function ContactSection() {
           ].map((card, i) => (
             <Reveal key={card.title} delay={i * 110}>
               <div className="h-full rounded-3xl bg-white p-6 text-center shadow-soft transition-transform duration-300 hover:-translate-y-1">
-                <h3 className="font-display text-lg font-bold text-soya-700">{card.title}</h3>
+                <h3 className="font-display text-lg font-bold text-soya-700">
+                  {card.title}
+                </h3>
                 {card.body}
               </div>
             </Reveal>
@@ -98,7 +111,8 @@ export default function ContactSection() {
         <Reveal>
           <div className="rounded-3xl border-2 border-gold-400 bg-cream-100 p-8 text-center shadow-soft">
             <h3 className="font-display text-xl font-bold text-soya-800">
-              Pesan Online — cari <span className="text-gold-600">"Gressoy"</span>
+              Pesan Online dengan{" "}
+              <span className="text-gold-600">"Gressoy"</span>
             </h3>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
               {CONTACT.orderPlatforms.map((platform) => (
@@ -117,5 +131,5 @@ export default function ContactSection() {
         </Reveal>
       </div>
     </section>
-  )
+  );
 }

@@ -1,23 +1,25 @@
-import SectionHeading from './SectionHeading.jsx'
-import Reveal from './Reveal.jsx'
-import { CONTACT, LOCATION } from '../data/contact.js'
-import soybeanHand from '../assets/soybean-hand.png'
-import cup from '../assets/cup.png'
-import gelas from '../assets/gelas.png'
-import kedelai from '../assets/kedelai.png'
+import SectionHeading from "./SectionHeading.jsx";
+import Reveal from "./Reveal.jsx";
+import { CONTACT, LOCATION } from "../data/contact.js";
+import soybeanHand from "../assets/soybean-hand.png";
+import cup from "../assets/cup.png";
+import gelas from "../assets/gelas.png";
+import kedelai from "../assets/kedelai.png";
 
 const STATS = [
-  { value: 'Sejak 2019', label: 'Pionir soya modern' },
-  { value: '20+ Varian', label: 'Rasa untuk dipilih' },
-  { value: '100%', label: 'Tidak langu' },
-  { value: 'Rendah Kalori', label: 'Pemanis alami, Indeks Glikemik rendah' },
-]
+  { value: "Sejak 2019", label: "Pionir soya modern" },
+  { value: "16 Varian", label: "Rasa untuk dipilih" },
+  { value: "100%", label: "Tidak langu" },
+  { value: "Rendah Kalori", label: "Pemanis alami, Indeks Glikemik rendah" },
+];
 
 // Aliran kedelai menabur dari atas (memudar di ujung bawah).
 const pourMask = {
-  maskImage: 'linear-gradient(to bottom, transparent 0%, #000 18%, #000 55%, transparent 95%)',
-  WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, #000 18%, #000 55%, transparent 95%)',
-}
+  maskImage:
+    "linear-gradient(to bottom, transparent 0%, #000 18%, #000 55%, transparent 95%)",
+  WebkitMaskImage:
+    "linear-gradient(to bottom, transparent 0%, #000 18%, #000 55%, transparent 95%)",
+};
 
 /**
  * About Us mengikuti komposisi referensi Figma: tangan menyembul dari tepi
@@ -103,12 +105,13 @@ export default function AboutUsSection() {
         <Reveal delay={120}>
           <div className="mx-auto max-w-2xl rounded-[2.5rem] bg-white/95 p-7 shadow-card sm:p-9 lg:p-10">
             <p className="text-base leading-relaxed text-soya-800/90 sm:text-lg">
-              Semuanya berawal di Purwokerto tahun 2019, waktu susu kedelai kekinian
-              masih jarang. Sejak itu kami setia mengolah kedelai pilihan jadi 20+ rasa
-              yang benar-benar bebas bau langu. Manisnya dari pemanis alami rendah
-              kalori, jadi tetap enak walau kamu lagi jaga gula. Nggak cocok susu sapi?
-              Punya kami ramah di perut, kok. Tinggal cari <strong>"Gressoy"</strong> di
-              Gofood, Grabfood, atau ShopeeFood — atau mampir langsung ke outlet kami.
+              Semuanya berawal di Purwokerto tahun 2019, waktu susu kedelai
+              kekinian masih jarang. Sejak itu kami setia mengolah kedelai
+              pilihan jadi 16 rasa yang benar-benar bebas bau langu. Manisnya
+              dari pemanis alami rendah kalori, jadi tetap enak walau kamu lagi
+              jaga gula. Nggak cocok susu sapi? Punya kami ramah di perut, kok.
+              Tinggal cari <strong>"Gressoy"</strong> di Gofood, Grabfood, atau
+              ShopeeFood, atau mampir langsung ke outlet kami.
             </p>
 
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
@@ -137,7 +140,9 @@ export default function AboutUsSection() {
           {STATS.map((stat, i) => (
             <Reveal key={stat.value} delay={i * 100}>
               <div className="flex h-full flex-col justify-center rounded-2xl bg-cream-100 px-3 py-4 text-center shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:rotate-1">
-                <p className="font-display text-lg font-bold text-soya-700">{stat.value}</p>
+                <p className="font-display text-lg font-bold text-soya-700">
+                  {stat.value}
+                </p>
                 <p className="mt-1 text-xs text-soya-800/70">{stat.label}</p>
               </div>
             </Reveal>
@@ -175,5 +180,5 @@ export default function AboutUsSection() {
         </Reveal>
       </div>
     </section>
-  )
+  );
 }

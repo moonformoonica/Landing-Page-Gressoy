@@ -19,7 +19,7 @@ export default function OurProductsSection() {
       <div className="section-shell">
         <SectionHeading
           title="Our Products"
-          subtitle="Semua menu GresSOY dibuat dari Soya Original Premium. Pilih kategori, lalu pilih ukuranmu di tiap kartu."
+          subtitle="Semua menu Gressoy dibuat dari Soya Original Premium. Pilih menu favorit kalian, lalu sesuaikan ukurannya!"
         />
 
         {/* Search sederhana (client-side, filter by nama menu) */}
