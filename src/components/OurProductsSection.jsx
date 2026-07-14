@@ -1,25 +1,27 @@
-import { useMemo, useState } from 'react'
-import SectionHeading from './SectionHeading.jsx'
-import MenuCard from './MenuCard.jsx'
-import Reveal from './Reveal.jsx'
-import { CATEGORIES, MENU } from '../data/menu.js'
+import { useMemo, useState } from "react";
+import SectionHeading from "./SectionHeading.jsx";
+import MenuCard from "./MenuCard.jsx";
+import Reveal from "./Reveal.jsx";
+import { CATEGORIES, MENU } from "../data/menu.js";
 
 export default function OurProductsSection() {
-  const [category, setCategory] = useState(CATEGORIES[0].key)
-  const [query, setQuery] = useState('')
+  const [category, setCategory] = useState(CATEGORIES[0].key);
+  const [query, setQuery] = useState("");
 
   const items = useMemo(() => {
-    const q = query.trim().toLowerCase()
+    const q = query.trim().toLowerCase();
     // Saat user mencari, cari di semua kategori supaya hasil tidak "hilang"
-    return MENU.filter((item) => (q ? item.name.toLowerCase().includes(q) : item.category === category))
-  }, [category, query])
+    return MENU.filter((item) =>
+      q ? item.name.toLowerCase().includes(q) : item.category === category,
+    );
+  }, [category, query]);
 
   return (
     <section id="our-products" className="bg-cream-50 py-16 sm:py-20">
       <div className="section-shell">
         <SectionHeading
           title="Our Products"
-          subtitle="Semua menu Gressoy dibuat dari Soya Original Premium. Pilih menu favorit kalian, lalu sesuaikan ukurannya!"
+          subtitle="Semua menu Gressoy dibuat dari Soya Original Premium. Pilih menu favorit mu, lalu sesuaikan ukurannya!"
         />
 
         {/* Search sederhana (client-side, filter by nama menu) */}
@@ -35,9 +37,13 @@ export default function OurProductsSection() {
         </div>
 
         {/* Tab kategori */}
-        <div className="mb-8 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Kategori menu">
+        <div
+          className="mb-8 flex flex-wrap justify-center gap-2"
+          role="tablist"
+          aria-label="Kategori menu"
+        >
           {CATEGORIES.map((cat) => {
-            const isActive = !query && category === cat.key
+            const isActive = !query && category === cat.key;
             return (
               <button
                 key={cat.key}
@@ -45,18 +51,18 @@ export default function OurProductsSection() {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => {
-                  setCategory(cat.key)
-                  setQuery('')
+                  setCategory(cat.key);
+                  setQuery("");
                 }}
                 className={`rounded-full px-4 py-2 font-display text-sm font-semibold transition-all duration-300 sm:px-5 ${
                   isActive
-                    ? 'bg-gold-500 text-soya-900 shadow-soft'
-                    : 'bg-white text-soya-700 shadow-soft hover:-translate-y-0.5 hover:bg-soya-100'
+                    ? "bg-gold-500 text-soya-900 shadow-soft"
+                    : "bg-white text-soya-700 shadow-soft hover:-translate-y-0.5 hover:bg-soya-100"
                 }`}
               >
                 {cat.label}
               </button>
-            )
+            );
           })}
         </div>
 
@@ -75,9 +81,10 @@ export default function OurProductsSection() {
         )}
 
         <p className="mt-8 text-center text-xs text-soya-800/60">
-          Pesan online: buka Gofood / Grabfood / ShopeeFood lalu cari <strong>"Gressoy"</strong>.
+          Pesan online: buka Gofood / Grabfood / ShopeeFood lalu cari{" "}
+          <strong>"Gressoy"</strong>.
         </p>
       </div>
     </section>
-  )
+  );
 }
