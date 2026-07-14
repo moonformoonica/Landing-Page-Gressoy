@@ -1,11 +1,3 @@
-/**
- * Ikon sosial media versi logo berwarna resmi (SVG inline):
- * - Instagram : rounded square dengan gradasi ungu→pink→oranye khas
- * - TikTok    : glyph nada dengan offset cyan & merah khas
- * - GoogleMaps: pin 4 warna (merah/biru/kuning/hijau) + lingkaran putih
- * - WhatsApp  : currentColor (dipakai di tombol hijau WA)
- */
-
 export function InstagramIcon({ className = 'h-5 w-5' }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">

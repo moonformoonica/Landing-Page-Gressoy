@@ -1,12 +1,6 @@
 import { useState } from 'react'
 import { SIZES } from '../data/menu.js'
 
-/**
- * Kartu produk dengan toggle ukuran per kartu — user memilih ukuran dan
- * hanya melihat harga ukuran itu (nyaman di mobile, tanpa tabel penuh).
- * Ukuran yang tidak tersedia (harga null) disembunyikan dari pilihan.
- * Item dengan `flatPrice` (mis. dessert) tampil tanpa toggle ukuran.
- */
 export default function MenuCard({ item }) {
   const availableSizes = item.flatPrice ? [] : SIZES.filter((size) => item.prices[size.key] != null)
   const [selected, setSelected] = useState(

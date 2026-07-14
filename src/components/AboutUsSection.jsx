@@ -21,12 +21,6 @@ const pourMask = {
     "linear-gradient(to bottom, transparent 0%, #000 18%, #000 55%, transparent 95%)",
 };
 
-/**
- * About Us mengikuti komposisi referensi Figma: tangan menyembul dari tepi
- * kiri sedang ditaburi kedelai, cerita singkat di tengah, dan cup + gelas
- * di pojok kanan-bawah dengan aliran kedelai panjang menabur dari atas —
- * semua elemen nempel pojok/tepi supaya terasa natural, tidak bertumpuk.
- */
 export default function AboutUsSection() {
   return (
     <section id="about-us" className="relative overflow-hidden py-16 sm:py-20">

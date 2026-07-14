@@ -12,20 +12,12 @@ const softMask = {
     "radial-gradient(ellipse at center, #000 38%, transparent 78%)",
 };
 
-// Maskot memudar di sisi bawah supaya menyatu dengan background dan tidak
-// terlihat terpotong keras di tepi bawah section. (Flip horizontal tidak
-// memengaruhi fade vertikal ini, jadi aman dipakai kedua maskot.)
+// Maskot memudar di sisi bawah supaya menyatu dengan background
 const mascotFade = {
   maskImage: "linear-gradient(to bottom, #000 52%, transparent 94%)",
   WebkitMaskImage: "linear-gradient(to bottom, #000 52%, transparent 94%)",
 };
 
-/**
- * Hero: tiga video suasana di atas, lalu headline serif gold
- * "Dijamin 100% tidak langu!". Maskot kembar diletakkan mepet di pojok
- * bawah kiri-kanan dan di-flip menghadap ke dalam supaya natural. Kedelai
- * menuang miring dari kedua sudut atas. Background dari wrapper gradient.
- */
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
@@ -45,9 +37,6 @@ export default function Hero() {
         className="pointer-events-none absolute -right-20 -top-16 w-72 -rotate-[18deg] -scale-x-100 opacity-40 sm:w-[26rem]"
       />
 
-      {/* Maskot kembar di pojok bawah, menghadap ke dalam (kiri di-flip).
-          Float ditaruh di wrapper, flip di <img>, supaya animasi tidak
-          menimpa transform flip. */}
       <div className="animate-float-slow pointer-events-none absolute bottom-0 left-0 hidden lg:block">
         <img
           src={mascot}

@@ -7,11 +7,6 @@ const NAV_ITEMS = [
   { id: 'contact-us', label: 'Contact Us' },
 ]
 
-/**
- * Navbar sticky mengikuti referensi Figma: logo kiri, menu di dalam
- * satu bar gold/brass membulat dengan teks serif. Item aktif di-highlight
- * pill cream mengikuti section yang terlihat (scrollspy).
- */
 export default function Navbar() {
   const [active, setActive] = useState('')
 

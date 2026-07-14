@@ -106,8 +106,6 @@ export default function ContactSection() {
           ))}
         </div>
 
-        {/* Order online — background cream supaya tombol Gofood (hijau) tidak
-            menyaru; tiap tombol deep-link langsung ke etalase resmi Gressoy */}
         <Reveal>
           <div className="rounded-3xl border-2 border-gold-400 bg-cream-100 p-8 text-center shadow-soft">
             <h3 className="font-display text-xl font-bold text-soya-800">

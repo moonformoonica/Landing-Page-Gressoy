@@ -6,12 +6,6 @@ import olahPoster from '../assets/video/olah-kedelai-poster.jpg'
 import diracikVid from '../assets/video/diracik.mp4'
 import diracikPoster from '../assets/video/diracik-poster.jpg'
 
-/**
- * Tiga klip pendek suasana Gressoy (rasio 4:3, tanpa suara, loop on-repeat).
- * Klip "olah kedelai" ditaruh di tengah dan sedikit diangkat sebagai fokus.
- * Selalu 3 berjejar ke samping — termasuk di mobile (grid-cols-3), bukan
- * menumpuk ke bawah.
- */
 const CLIPS = [
   { src: etalaseVid, poster: etalasePoster, label: 'Etalase Kami', tilt: 'sm:-rotate-2' },
   { src: olahVid, poster: olahPoster, label: 'Olah Kedelai Pilihan', tilt: 'sm:-translate-y-4 sm:scale-[1.05]' },

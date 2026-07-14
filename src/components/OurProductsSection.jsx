@@ -24,7 +24,6 @@ export default function OurProductsSection() {
           subtitle="Semua menu Gressoy dibuat dari Soya Original Premium. Pilih menu favorit mu, lalu sesuaikan ukurannya!"
         />
 
-        {/* Search sederhana (client-side, filter by nama menu) */}
         <div className="mx-auto mb-6 max-w-sm">
           <input
             type="search"
