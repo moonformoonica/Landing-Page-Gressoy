@@ -14,8 +14,16 @@ export const LOCATION = {
   rating: 5.0,
   reviewCount: 354,
   hours: "08.00 – 22.00 WIB, setiap hari Senin-Sabtu",
+  // Link "Rute ke sini" / "Buka di Maps" -> pakai place_id resmi supaya
+  // membuka listing bisnis Gressoy yang asli (dengan rating & review).
+  mapsUrl:
+    "https://www.google.com/maps/place/?q=place_id:ChIJRa2ZJTpfZS4RnG2rdMPs-nA",
+  // Embed pakai koordinat (bukan nama tempat) supaya Google TIDAK
+  // merender card info bawaannya sendiri di dalam iframe — jadi cuma
+  // pin polos, dan card custom di MapEmbed.jsx yang tampil sendirian
+  // (tidak bertumpuk lagi).
   embedSrc:
-    "https://www.google.com/maps?q=Gressoy,+Jl.+Kolonel+Sugiono+No.34,+Tipar,+Purwanegara,+Kec.+Purwokerto+Tim.,+Kabupaten+Banyumas,+Jawa+Tengah+53116&output=embed"
+    "https://www.google.com/maps?q=-7.4284743,109.2380434&z=17&output=embed",
 };
 
 export const CONTACT = {
