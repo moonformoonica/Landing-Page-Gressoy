@@ -63,7 +63,7 @@ export default function Hero() {
         <div className="mx-auto flex max-w-xl flex-col items-center gap-6 pb-6 text-center lg:pb-16">
           <Reveal>
             <span className="rounded-full bg-cream-100/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-soya-800">
-              Plant Based Milk · Asli Purwokerto
+              Plant Based Milk Asli· Pertama di Purwokerto
             </span>
           </Reveal>
 
