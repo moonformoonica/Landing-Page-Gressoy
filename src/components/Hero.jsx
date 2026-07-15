@@ -76,7 +76,7 @@ export default function Hero() {
           <Reveal delay={111}>
             <p className="max-w-xl text-pretty text-base text-cream-50/90 sm:text-lg">
               Susu kedelai premium sejak 2019, hadir dalam 16 varian rasa dengan
-              pemanis alami rendah kalori, segar, higienis, alami, dan ramah
+              pemanis gula kelapa alami yang rendah kalori, segar, higienis, dan ramah
               untuk kamu yang intoleran laktosa.
             </p>
           </Reveal>

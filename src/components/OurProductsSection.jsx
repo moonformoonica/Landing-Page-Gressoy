@@ -79,8 +79,9 @@ export default function OurProductsSection() {
           </p>
         )}
 
-        <p className="mt-8 text-center text-xs text-soya-800/60">
+        <p className="mt-11 text-center text-xs text-soya-800/60">
           Pesan online: buka Gofood / Grabfood / ShopeeFood lalu cari{" "}
+          Kamu juga bisa mampir langsung untuk Dine In atau Take Away di outlet kami!
           <strong>"Gressoy"</strong>.
         </p>
       </div>

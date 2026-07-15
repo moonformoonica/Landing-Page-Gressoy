@@ -102,10 +102,10 @@ export default function AboutUsSection() {
               Semuanya berawal di Purwokerto tahun 2019, waktu susu kedelai
               kekinian masih jarang. Sejak itu kami setia mengolah kedelai
               pilihan jadi 16 rasa yang benar-benar bebas bau langu. Manisnya
-              dari pemanis alami rendah kalori, jadi tetap enak walau kamu lagi
+              dari gula kelapa alami rendah kalori, jadi tetap enak walau kamu lagi
               jaga gula. Nggak cocok susu sapi? Punya kami ramah di perut, kok.
               Tinggal cari <strong>"Gressoy"</strong> di Gofood, Grabfood, atau
-              ShopeeFood, atau mampir langsung ke outlet kami.
+              ShopeeFood, atau mampir langsung ke outlet kami untuk Dine In maupun Take Away :)
             </p>
 
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
