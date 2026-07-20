@@ -50,6 +50,7 @@ export default function Navbar() {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
+                  onClick={() => setActive(item.id)}
                   className={`inline-block rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-all duration-300 sm:px-4 sm:text-sm ${
                     isActive
                       ? 'bg-cream-50 text-soya-900 shadow-soft'
