@@ -132,7 +132,7 @@ export default function ContactSection() {
                     rel="noopener noreferrer"
                     className={`${platform.color} inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold text-white shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110`}
                   >
-                    {PlatformIcon && <PlatformIcon className="h-4 w-4" />}
+                    {PlatformIcon && <PlatformIcon className="h-5 w-5" />}
                     {platform.name}
                   </a>
                 );
