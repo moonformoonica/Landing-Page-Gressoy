@@ -12,12 +12,12 @@ export const SIZES = [
 ];
 
 export const CATEGORIES = [
-  { key: "signature", label: "Signature" },
-  { key: "chocolate", label: "Chocolate" },
-  { key: "coffee", label: "Coffee" },
-  { key: "tropical", label: "Tropical" },
-  { key: "tea", label: "Tea" },
-  { key: "dessert", label: "Dessert" },
+  { key: "signature", label: "Soya Signature" },
+  { key: "chocolate", label: "Soya Chocolate" },
+  { key: "coffee", label: "Soya Coffee" },
+  { key: "tropical", label: "Soya Tropical" },
+  { key: "tea", label: "Soya Tea" },
+  { key: "dessert", label: "Soya Dessert" },
 ];
 
 export const MENU = [
