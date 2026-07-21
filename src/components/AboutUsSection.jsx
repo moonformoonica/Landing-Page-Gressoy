@@ -26,14 +26,14 @@ export default function AboutUsSection() {
     <section id="about-us" className="relative overflow-hidden py-16 sm:py-20">
       {/* ── Dekorasi desktop ── */}
       {/* Tangan menyembul dari tepi kiri + taburan kedelai besar mengucur ke telapak */}
-      <div className="pointer-events-none absolute -left-24 top-44 hidden w-[24rem] lg:block xl:w-[27rem]">
+      <div className="pointer-events-none absolute -left-16 top-48 hidden w-56 lg:block xl:w-64">
         <img
           src={kedelai}
           alt=""
           aria-hidden="true"
           loading="lazy"
           style={pourMask}
-          className="absolute -top-36 left-[46%] w-64 -translate-x-1/2 rotate-3 opacity-95 xl:w-72"
+          className="absolute -top-44 left-[46%] w-40 -translate-x-1/2 rotate-3 opacity-95 xl:w-48 xl:-top-48"
         />
         <img
           src={soybeanHand}
@@ -77,14 +77,14 @@ export default function AboutUsSection() {
 
         {/* Versi mobile/tablet: tangan menyembul dari kiri, ditaburi kedelai besar */}
         <Reveal className="lg:hidden">
-          <div className="relative -ml-14 mb-2 w-48 sm:w-56">
+          <div className="relative -ml-10 mb-2 mt-6 w-36 sm:w-44">
             <img
               src={kedelai}
               alt=""
               aria-hidden="true"
               loading="lazy"
               style={pourMask}
-              className="absolute -top-16 left-[46%] w-32 -translate-x-1/2 opacity-95 sm:w-36"
+              className="absolute -top-14 left-[46%] w-24 -translate-x-1/2 opacity-95 sm:w-28 sm:-top-16"
             />
             <img
               src={soybeanHand}
