@@ -33,7 +33,7 @@ export default function AboutUsSection() {
           aria-hidden="true"
           loading="lazy"
           style={pourMask}
-          className="absolute -top-24 left-[46%] w-72 -translate-x-1/2 rotate-3 opacity-95 xl:w-80"
+          className="absolute -top-36 left-[46%] w-64 -translate-x-1/2 rotate-3 opacity-95 xl:w-72"
         />
         <img
           src={soybeanHand}
@@ -77,14 +77,14 @@ export default function AboutUsSection() {
 
         {/* Versi mobile/tablet: tangan menyembul dari kiri, ditaburi kedelai besar */}
         <Reveal className="lg:hidden">
-          <div className="relative -ml-14 mb-2 w-64 sm:w-72">
+          <div className="relative -ml-14 mb-2 w-48 sm:w-56">
             <img
               src={kedelai}
               alt=""
               aria-hidden="true"
               loading="lazy"
               style={pourMask}
-              className="absolute -top-10 left-[46%] w-44 -translate-x-1/2 opacity-95"
+              className="absolute -top-16 left-[46%] w-32 -translate-x-1/2 opacity-95 sm:w-36"
             />
             <img
               src={soybeanHand}

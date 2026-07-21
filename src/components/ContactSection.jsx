@@ -6,8 +6,17 @@ import {
   TiktokIcon,
   WhatsappIcon,
   GmapsIcon,
+  GofoodIcon,
+  GrabfoodIcon,
+  ShopeeFoodIcon,
 } from "./icons.jsx";
 import { CONTACT, LOCATION } from "../data/contact.js";
+
+const PLATFORM_ICONS = {
+  Gofood: GofoodIcon,
+  Grabfood: GrabfoodIcon,
+  ShopeeFood: ShopeeFoodIcon,
+};
 
 export default function ContactSection() {
   return (
@@ -110,20 +119,24 @@ export default function ContactSection() {
           <div className="rounded-3xl border-2 border-gold-400 bg-cream-100 p-8 text-center shadow-soft">
             <h3 className="font-display text-xl font-bold text-soya-800">
               Pesan Online dengan{" "}
-              <span className="text-gold-600">"Gressoy"</span>
+              <span className="text-soya-600">"Gressoy"</span>
             </h3>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-              {CONTACT.orderPlatforms.map((platform) => (
-                <a
-                  key={platform.name}
-                  href={platform.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${platform.color} rounded-full px-6 py-2.5 text-sm font-semibold text-white shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110`}
-                >
-                  {platform.name}
-                </a>
-              ))}
+              {CONTACT.orderPlatforms.map((platform) => {
+                const PlatformIcon = PLATFORM_ICONS[platform.name];
+                return (
+                  <a
+                    key={platform.name}
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${platform.color} inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold text-white shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110`}
+                  >
+                    {PlatformIcon && <PlatformIcon className="h-4 w-4" />}
+                    {platform.name}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </Reveal>

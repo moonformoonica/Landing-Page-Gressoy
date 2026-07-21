@@ -53,6 +53,35 @@ export function GmapsIcon({ className = 'h-5 w-5' }) {
   )
 }
 
+export function GofoodIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="M3.5 11h17a1 1 0 0 1 1 1c0 4.5-3.4 8-9 8s-9-3.5-9-8a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+      <path d="M8 11c0-2 .8-3 1.6-4M12 11c0-2.4 1-3.6 2-5M16 11c0-1.8.7-2.8 1.4-3.8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function GrabfoodIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="M3.5 8.8 12 4.5l8.5 4.3v1.7H3.5V8.8Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      <path d="M4.5 10.5v7.2a1.6 1.6 0 0 0 1.6 1.6h11.8a1.6 1.6 0 0 0 1.6-1.6v-7.2" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      <path d="M12 10.5v8.8M8.2 8.2v2.3M15.8 8.2v2.3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function ShopeeFoodIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="M5 8.5h14l-1.1 10a2 2 0 0 1-2 1.8H8.1a2 2 0 0 1-2-1.8L5 8.5Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+      <path d="M8.3 8.5V6.8a3.7 3.7 0 0 1 7.4 0v1.7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+      <path d="M9.5 13c0 1.4 1.1 2.5 2.5 2.5s2.5-1.1 2.5-2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 export function WhatsappIcon({ className = 'h-5 w-5' }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">

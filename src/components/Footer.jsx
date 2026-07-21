@@ -54,8 +54,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="text-cream-100/50">
-          © {new Date().getFullYear()} Gressoy Indonesia. Susu kedelai asli
-          Purwokerto.
+          © {new Date().getFullYear()} Gressoy Indonesia. Susu kedelai asli No. 1 di Purwokerto.
         </p>
       </div>
     </footer>

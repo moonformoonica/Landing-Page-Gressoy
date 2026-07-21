@@ -37,21 +37,21 @@ export default function Hero() {
         className="pointer-events-none absolute -right-20 -top-16 w-72 -rotate-[18deg] -scale-x-100 opacity-40 sm:w-[26rem]"
       />
 
-      <div className="animate-float-slow pointer-events-none absolute bottom-0 left-0 hidden lg:block">
+      <div className="animate-float-slow pointer-events-none absolute bottom-0 left-0">
         <img
           src={mascot}
           alt=""
           aria-hidden="true"
           style={mascotFade}
-          className="w-56 -scale-x-100 xl:w-72"
+          className="w-20 -scale-x-100 sm:w-28 md:w-40 lg:w-56 xl:w-72"
         />
       </div>
-      <div className="animate-float-slow pointer-events-none absolute bottom-0 right-0 hidden lg:block">
+      <div className="animate-float-slow pointer-events-none absolute bottom-0 right-0">
         <img
           src={mascot}
           alt="Maskot GresSOY memeluk botol-botol susu kedelai"
           style={mascotFade}
-          className="w-56 xl:w-72"
+          className="w-20 sm:w-28 md:w-40 lg:w-56 xl:w-72"
         />
       </div>
 
@@ -62,8 +62,8 @@ export default function Hero() {
         {/* Headline */}
         <div className="mx-auto flex max-w-xl flex-col items-center gap-6 pb-6 text-center lg:pb-16">
           <Reveal>
-            <span className="rounded-full bg-cream-100/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-soya-800">
-            Susu Soya Premium · Pertama di Purwokerto
+            <span className="whitespace-nowrap rounded-full bg-cream-100/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-normal text-soya-800 sm:px-4 sm:text-xs sm:tracking-widest">
+              Susu Soya Premium · Pertama di Purwokerto
             </span>
           </Reveal>
 
