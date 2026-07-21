@@ -17,7 +17,7 @@ export const CATEGORIES = [
   { key: "coffee", label: "Soya Coffee" },
   { key: "tropical", label: "Soya Tropical" },
   { key: "tea", label: "Soya Tea" },
-  { key: "dessert", label: "Soya Dessert" },
+  { key: "dessert", label: "Plant Based Dessert" },
 ];
 
 export const MENU = [
