@@ -25,7 +25,10 @@ export default function Navbar() {
       ticking = false
       const triggerLine = window.innerHeight * 0.38
 
-      let current = sections[0].id
+      // Mulai tanpa highlight: saat masih di Hero (belum sampai About Us),
+      // tidak ada menu yang aktif. Highlight baru muncul setelah section
+      // pertama melewati garis pemicu.
+      let current = ''
       for (const section of sections) {
         // Section dianggap aktif jika bagian atasnya sudah melewati garis pemicu.
         if (section.getBoundingClientRect().top <= triggerLine) {
