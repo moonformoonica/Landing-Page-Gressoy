@@ -95,7 +95,7 @@ export default function AboutUsSection() {
           </div>
         </Reveal>
 
-        {/* Cerita singkat — di tengah, memberi ruang untuk dekorasi tepi */}
+        {/* Cerita singkat di tengah, memberi ruang untuk dekorasi tepi */}
         <Reveal delay={120}>
           <div className="mx-auto max-w-2xl rounded-[2.5rem] bg-white/95 p-7 shadow-card sm:p-9 lg:p-10">
             <p className="text-base leading-relaxed text-soya-800/90 sm:text-lg">
