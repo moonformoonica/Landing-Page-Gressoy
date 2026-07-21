@@ -12,20 +12,42 @@ export default function Navbar() {
 
   useEffect(() => {
     const sections = NAV_ITEMS.map((item) => document.getElementById(item.id)).filter(Boolean)
+    if (sections.length === 0) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Pilih section yang paling banyak terlihat di viewport
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-        if (visible.length > 0) setActive(visible[0].target.id)
-      },
-      { rootMargin: '-30% 0px -40% 0px', threshold: [0, 0.25, 0.5] },
-    )
+    // Scrollspy berbasis posisi: highlight mengikuti section yang sedang
+    // melewati garis pemicu (±38% dari atas viewport). Pendekatan ini
+    // deterministik untuk section yang tinggi & tidak "macet" saat berpindah
+    // (mis. About Us -> Our Products), berbeda dengan perbandingan
+    // intersectionRatio yang tidak andal untuk section berukuran besar.
+    let ticking = false
 
-    sections.forEach((s) => observer.observe(s))
-    return () => observer.disconnect()
+    const updateActive = () => {
+      ticking = false
+      const triggerLine = window.innerHeight * 0.38
+
+      let current = sections[0].id
+      for (const section of sections) {
+        // Section dianggap aktif jika bagian atasnya sudah melewati garis pemicu.
+        if (section.getBoundingClientRect().top <= triggerLine) {
+          current = section.id
+        }
+      }
+      setActive(current)
+    }
+
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      window.requestAnimationFrame(updateActive)
+    }
+
+    updateActive()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
   }, [])
 
   return (
