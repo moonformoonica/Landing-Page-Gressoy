@@ -86,10 +86,10 @@ export default function MapEmbed({
           href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:underline"
+          className="mt-3 flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:underline"
         >
           {/* icon: directions */}
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M21.71 11.29 12.71 2.3a1 1 0 0 0-1.42 0l-9 9a1 1 0 0 0 0 1.41l9 9a1 1 0 0 0 1.42 0l9-9a1 1 0 0 0 0-1.42ZM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5Z" />
           </svg>
           Rute ke sini
