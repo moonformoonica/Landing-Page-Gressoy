@@ -40,7 +40,7 @@ export default function AboutUsSection() {
           aria-hidden="true"
           loading="lazy"
           style={pourMask}
-          className="absolute -top-44 left-[46%] z-10 w-40 -translate-x-1/2 rotate-3 opacity-95 xl:w-48 xl:-top-48"
+          className="absolute -top-32 left-[46%] z-10 w-40 -translate-x-1/2 rotate-3 opacity-95 xl:w-48 xl:-top-36"
         />
       </div>
 
@@ -90,7 +90,7 @@ export default function AboutUsSection() {
               aria-hidden="true"
               loading="lazy"
               style={pourMask}
-              className="absolute -top-14 left-[46%] z-10 w-24 -translate-x-1/2 opacity-95 sm:w-28 sm:-top-16"
+              className="absolute -top-8 left-[46%] z-10 w-24 -translate-x-1/2 opacity-95 sm:w-28 sm:-top-10"
             />
           </div>
         </Reveal>
