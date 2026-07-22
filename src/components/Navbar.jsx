@@ -55,7 +55,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-sage-500/90 backdrop-blur">
-      <nav className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-end gap-3 py-2.5 pl-4 pr-2 sm:gap-4 sm:pl-6 sm:pr-4 lg:pl-8 lg:pr-6">
+      <nav className="flex w-full flex-wrap items-center justify-end gap-3 py-2.5 pl-4 pr-3 sm:gap-4 sm:pl-6 sm:pr-5 lg:pl-8 lg:pr-6">
         <a
           href="#top"
           aria-label="Kembali ke atas"
