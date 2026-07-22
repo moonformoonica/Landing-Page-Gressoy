@@ -8,9 +8,9 @@ import kedelaiKanan from "../assets/sisi-kanan.jpg";
 
 // Mask lembut supaya taburan kedelai memudar di tepinya.
 const softMask = {
-  maskImage: "radial-gradient(ellipse at center, #000 38%, transparent 78%)",
+  maskImage: "radial-gradient(ellipse at center, #000 50%, transparent 67%)",
   WebkitMaskImage:
-    "radial-gradient(ellipse at center, #000 38%, transparent 78%)",
+    "radial-gradient(ellipse at center, #000 50%, transparent 67%)",
 };
 
 // Maskot memudar di sisi bawah supaya menyatu dengan background
