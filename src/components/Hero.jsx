@@ -28,14 +28,14 @@ export default function Hero() {
         alt=""
         aria-hidden="true"
         style={softMask}
-        className="pointer-events-none absolute -left-20 -top-16 w-72 rotate-[18deg] opacity-30 blur-[3px] sm:w-[26rem]"
+        className="pointer-events-none absolute -left-20 -top-16 w-72 rotate-[18deg] opacity-35 blur-[1px] sm:w-[26rem]"
       />
       <img
         src={kedelaiKanan}
         alt=""
         aria-hidden="true"
         style={softMask}
-        className="pointer-events-none absolute -right-20 -top-16 w-72 -rotate-[18deg] opacity-30 blur-[3px] sm:w-[26rem]"
+        className="pointer-events-none absolute -right-20 -top-16 w-72 -rotate-[18deg] opacity-35 blur-[1px] sm:w-[26rem]"
       />
 
       <div className="animate-float-slow pointer-events-none absolute bottom-0 left-0">
