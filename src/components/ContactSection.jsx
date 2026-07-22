@@ -120,7 +120,7 @@ export default function ContactSection() {
         <Reveal>
           <div className="rounded-3xl border-2 border-gold-400 bg-cream-100 p-8 text-center shadow-soft">
             <h3 className="font-display text-xl font-bold text-soya-800">
-              Pesan Online dengan{" "}
+              Pesan Online dengan cari{" "}
               <span className="text-soya-600">"Gressoy"</span>
             </h3>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
