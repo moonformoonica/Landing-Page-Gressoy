@@ -3,7 +3,8 @@ import Reveal from "./Reveal.jsx";
 import VideoShowcase from "./VideoShowcase.jsx";
 import { WhatsappIcon } from "./icons.jsx";
 import mascot from "../assets/mascot.png";
-import kedelai from "../assets/kedelai.png";
+import kedelaiKiri from "../assets/sisi-kiri.jpg";
+import kedelaiKanan from "../assets/sisi-kanan.jpg";
 
 // Mask lembut supaya taburan kedelai memudar di tepinya.
 const softMask = {
@@ -23,18 +24,18 @@ export default function Hero() {
     <section id="top" className="relative overflow-hidden">
       {/* Kedelai menuang miring dari kedua sudut atas, tepinya memudar */}
       <img
-        src={kedelai}
+        src={kedelaiKiri}
         alt=""
         aria-hidden="true"
         style={softMask}
-        className="pointer-events-none absolute -left-20 -top-16 w-72 rotate-[18deg] opacity-40 sm:w-[26rem]"
+        className="pointer-events-none absolute -left-20 -top-16 w-72 rotate-[18deg] opacity-30 blur-[3px] sm:w-[26rem]"
       />
       <img
-        src={kedelai}
+        src={kedelaiKanan}
         alt=""
         aria-hidden="true"
         style={softMask}
-        className="pointer-events-none absolute -right-20 -top-16 w-72 -rotate-[18deg] -scale-x-100 opacity-40 sm:w-[26rem]"
+        className="pointer-events-none absolute -right-20 -top-16 w-72 -rotate-[18deg] opacity-30 blur-[3px] sm:w-[26rem]"
       />
 
       <div className="animate-float-slow pointer-events-none absolute bottom-0 left-0">
