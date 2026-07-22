@@ -63,7 +63,7 @@ export default function Hero() {
         <div className="mx-auto flex max-w-xl flex-col items-center gap-6 pb-6 text-center lg:pb-16">
           <Reveal>
             <span className="whitespace-nowrap rounded-full bg-cream-100/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-normal text-soya-800 sm:px-4 sm:text-xs sm:tracking-widest">
-              Susu Soya Premium · Pertama di Purwokerto
+              Susu Soya Premium Pertama di Purwokerto
             </span>
           </Reveal>
 
