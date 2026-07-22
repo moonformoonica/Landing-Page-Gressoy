@@ -16,8 +16,9 @@ export const LOCATION = {
   hoursTime: "08.00 - 22.00 WIB,",
   hoursDays: "setiap hari Senin-Sabtu",
 
+  // Format URL Maps universal (api=1) — konsisten di desktop & aplikasi mobile.
   mapsUrl:
-    "https://www.google.com/maps/place/?q=place_id:ChIJRa2ZJTpfZS4RnG2rdMPs-nA",
+    "https://www.google.com/maps/search/?api=1&query=Gressoy%20Purwokerto&query_place_id=ChIJRa2ZJTpfZS4RnG2rdMPs-nA",
 
   embedSrc:
     "https://www.google.com/maps?q=-7.4284743,109.2380434&z=17&output=embed",
