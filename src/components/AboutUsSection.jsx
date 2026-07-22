@@ -25,7 +25,7 @@ export default function AboutUsSection() {
   return (
     <section id="about-us" className="relative overflow-hidden py-16 sm:py-20">
       {/* ── Dekorasi desktop ── */}
-      {/* Tangan menyembul dari tepi kiri + taburan kedelai besar mengucur ke telapak */}
+      {/* Tangan menyembul dari tepi kiri */}
       <div className="pointer-events-none absolute -left-16 top-48 hidden w-56 lg:block xl:w-64">
         <img
           src={soybeanHand}
@@ -33,14 +33,6 @@ export default function AboutUsSection() {
           aria-hidden="true"
           loading="lazy"
           className="animate-float-slow relative w-full drop-shadow-2xl"
-        />
-        <img
-          src={kedelai}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          style={pourMask}
-          className="absolute -top-32 left-[46%] z-10 w-40 -translate-x-1/2 rotate-3 opacity-95 xl:w-48 xl:-top-36"
         />
       </div>
 
@@ -75,7 +67,7 @@ export default function AboutUsSection() {
       <div className="section-shell relative">
         <SectionHeading tone="ink" title="Kenalan Yuk Sama Gressoy" />
 
-        {/* Versi mobile/tablet: tangan menyembul dari kiri, ditaburi kedelai besar */}
+        {/* Versi mobile/tablet: tangan menyembul dari kiri */}
         <Reveal className="lg:hidden">
           <div className="relative -ml-10 mb-2 mt-6 w-36 sm:w-44">
             <img
@@ -83,14 +75,6 @@ export default function AboutUsSection() {
               alt="Kedelai pilihan di telapak tangan"
               loading="lazy"
               className="relative w-full drop-shadow-2xl"
-            />
-            <img
-              src={kedelai}
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-              style={pourMask}
-              className="absolute -top-8 left-[46%] z-10 w-24 -translate-x-1/2 opacity-95 sm:w-28 sm:-top-10"
             />
           </div>
         </Reveal>
