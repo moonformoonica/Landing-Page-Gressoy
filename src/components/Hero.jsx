@@ -27,7 +27,7 @@ export default function Hero() {
         alt=""
         aria-hidden="true"
         style={softMask}
-        className="pointer-events-none absolute -left-36 -top-24 w-72 -rotate-[18deg] -scale-x-100 opacity-40 sm:-left-52 sm:-top-36 sm:w-[26rem]"
+        className="pointer-events-none absolute -left-28 -top-20 w-72 -rotate-[18deg] -scale-x-100 opacity-40 sm:-left-40 sm:-top-28 sm:w-[26rem]"
       />
 
       <div className="animate-float-slow pointer-events-none absolute bottom-0 left-0">
