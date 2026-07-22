@@ -13,7 +13,8 @@ export const LOCATION = {
   ],
   rating: 5.0,
   reviewCount: 354,
-  hours: "08.00 – 22.00 WIB, setiap hari Senin-Sabtu",
+  hoursTime: "08.00 - 22.00 WIB,",
+  hoursDays: "setiap hari Senin-Sabtu",
 
   mapsUrl:
     "https://www.google.com/maps/place/?q=place_id:ChIJRa2ZJTpfZS4RnG2rdMPs-nA",
@@ -40,7 +41,7 @@ export const CONTACT = {
     {
       name: "Gofood",
       url: "https://gofood.co.id/banyumas/restaurant/gressoy-indonesia-kolonel-sugiono-0f3aecb7-dd3f-4b1d-a0eb-971995812391",
-      color: "bg-[#00AA13]",
+      color: "bg-[#EE2737]",
     },
     {
       name: "Grabfood",
@@ -50,7 +51,7 @@ export const CONTACT = {
     {
       name: "ShopeeFood",
       url: "https://shopee.co.id/universal-link/now-food/shop/20457953?deep_and_deferred=1&shareChannel=copy_link",
-      color: "bg-[#EE4D2D]",
+      color: "bg-[#FF3A11]",
     },
   ],
 };

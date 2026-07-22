@@ -46,7 +46,9 @@ export default function ContactSection() {
               title: "Jam Operasional",
               body: (
                 <p className="mt-2 text-sm text-soya-800/80">
-                  {LOCATION.hours}
+                  {LOCATION.hoursTime}
+                  <br />
+                  {LOCATION.hoursDays}
                 </p>
               ),
             },
@@ -130,7 +132,7 @@ export default function ContactSection() {
                     href={platform.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${platform.color} inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold text-white shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110`}
+                    className={`${platform.color} inline-flex items-center gap-2 rounded-full border-2 border-cream-50 px-6 py-2.5 text-sm font-bold text-white shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110`}
                   >
                     {PlatformIcon && <PlatformIcon className="h-5 w-5" />}
                     {platform.name}

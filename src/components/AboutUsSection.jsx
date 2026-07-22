@@ -28,19 +28,19 @@ export default function AboutUsSection() {
       {/* Tangan menyembul dari tepi kiri + taburan kedelai besar mengucur ke telapak */}
       <div className="pointer-events-none absolute -left-16 top-48 hidden w-56 lg:block xl:w-64">
         <img
-          src={kedelai}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          style={pourMask}
-          className="absolute -top-44 left-[46%] w-40 -translate-x-1/2 rotate-3 opacity-95 xl:w-48 xl:-top-48"
-        />
-        <img
           src={soybeanHand}
           alt=""
           aria-hidden="true"
           loading="lazy"
           className="animate-float-slow relative w-full drop-shadow-2xl"
+        />
+        <img
+          src={kedelai}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          style={pourMask}
+          className="absolute -top-44 left-[46%] z-10 w-40 -translate-x-1/2 rotate-3 opacity-95 xl:w-48 xl:-top-48"
         />
       </div>
 
@@ -79,18 +79,18 @@ export default function AboutUsSection() {
         <Reveal className="lg:hidden">
           <div className="relative -ml-10 mb-2 mt-6 w-36 sm:w-44">
             <img
+              src={soybeanHand}
+              alt="Kedelai pilihan di telapak tangan"
+              loading="lazy"
+              className="relative w-full drop-shadow-2xl"
+            />
+            <img
               src={kedelai}
               alt=""
               aria-hidden="true"
               loading="lazy"
               style={pourMask}
-              className="absolute -top-14 left-[46%] w-24 -translate-x-1/2 opacity-95 sm:w-28 sm:-top-16"
-            />
-            <img
-              src={soybeanHand}
-              alt="Kedelai pilihan di telapak tangan"
-              loading="lazy"
-              className="relative w-full drop-shadow-2xl"
+              className="absolute -top-14 left-[46%] z-10 w-24 -translate-x-1/2 opacity-95 sm:w-28 sm:-top-16"
             />
           </div>
         </Reveal>
