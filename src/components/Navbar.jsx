@@ -75,7 +75,17 @@ export default function Navbar() {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  onClick={() => setActive(item.id)}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setActive(item.id)
+                    const target = document.getElementById(item.id)
+                   if (target) {
+                      const navHeight = document.querySelector('header').offsetHeight
+                      const targetPosition =
+                        target.getBoundingClientRect().top + window.scrollY - navHeight
+                      window.scrollTo({ top: targetPosition, behavior: 'smooth' })
+                    }
+                  }}
                   className={`inline-block rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-all duration-300 sm:px-4 sm:text-sm ${
                     isActive
                       ? 'bg-cream-50 text-soya-900 shadow-soft'

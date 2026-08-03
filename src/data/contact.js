@@ -42,7 +42,7 @@ export const CONTACT = {
     {
       name: "Gofood",
       url: "https://gofood.co.id/banyumas/restaurant/gressoy-indonesia-kolonel-sugiono-0f3aecb7-dd3f-4b1d-a0eb-971995812391",
-      color: "bg-[#EE2737]",
+      color: "bg-[#FF0000]",
     },
     {
       name: "Grabfood",
@@ -52,7 +52,7 @@ export const CONTACT = {
     {
       name: "ShopeeFood",
       url: "https://shopee.co.id/universal-link/now-food/shop/20457953?deep_and_deferred=1&shareChannel=copy_link",
-      color: "bg-[#FF3A11]",
+      color: "bg-[#EE4D2D]",
     },
   ],
 };

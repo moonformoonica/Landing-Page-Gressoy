@@ -1,17 +1,10 @@
 import SectionHeading from "./SectionHeading.jsx";
 import Reveal from "./Reveal.jsx";
 import { CONTACT, LOCATION } from "../data/contact.js";
-import soybeanHand from "../assets/soybean-hand.png";
 import cup from "../assets/cup.png";
 import gelas from "../assets/gelas.png";
+import menuang from "../assets/video/menuangkan.gif";
 import kedelai from "../assets/kedelai.png";
-
-const STATS = [
-  { value: "Sejak 2019", label: "Pionir soya modern" },
-  { value: "16 Varian", label: "Rasa untuk dipilih" },
-  { value: "100%", label: "Tidak langu" },
-  { value: "Rendah Kalori", label: "Pemanis alami, Indeks Glikemik rendah" },
-];
 
 // Aliran kedelai menabur dari atas (memudar di ujung bawah).
 const pourMask = {
@@ -21,61 +14,89 @@ const pourMask = {
     "linear-gradient(to bottom, transparent 0%, #000 18%, #000 55%, transparent 95%)",
 };
 
+const STATS = [
+  { value: "Sejak 2019", label: "Pionir soya modern" },
+  { value: "16 Varian", label: "Rasa untuk dipilih" },
+  { value: "100%", label: "Tidak langu" },
+  { value: "Rendah Kalori", label: "Pemanis alami, Indeks Glikemik rendah" },
+];
+
 export default function AboutUsSection() {
   return (
     <section id="about-us" className="relative overflow-hidden py-16 sm:py-20">
       {/* ── Dekorasi desktop ── */}
-      {/* Tangan menyembul dari tepi kiri */}
-      <div className="pointer-events-none absolute -left-16 top-48 hidden w-56 lg:block xl:w-64">
-        <img
-          src={soybeanHand}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          className="animate-float-slow relative w-full drop-shadow-2xl"
-        />
-      </div>
-
-      {/* Aliran kedelai panjang di tepi kanan, mengucur ke cup & gelas di pojok bawah */}
-      <div className="pointer-events-none absolute bottom-6 right-0 hidden lg:block xl:right-6">
+      {/* Kedelai mengucur ke cup & gelas di pojok kiri-bawah */}
+      <div className="pointer-events-none absolute bottom-10 left-0 hidden lg:block xl:left-6">
         <img
           src={kedelai}
           alt=""
           aria-hidden="true"
           loading="lazy"
           style={pourMask}
-          className="absolute -top-52 right-0 w-64 -rotate-3 opacity-95 xl:w-72"
+          className="absolute -top-52 -left-7 w-64 opacity-95 xl:w-72"
         />
-        <div className="relative flex items-end">
+        <div className="relative flex items-start mt-8">
+          <div className="animate-float-slow">
+            <img
+              src={cup}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="w-[120px] drop-shadow-2xl"
+            />
+          </div>
           <img
             src={gelas}
             alt=""
             aria-hidden="true"
             loading="lazy"
-            className="w-28 -rotate-6 drop-shadow-2xl"
-          />
-          <img
-            src={cup}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            className="animate-float-slow -ml-6 w-32 rotate-3 drop-shadow-2xl"
+            className="mb-1 w-[110px] rotate-[10deg] drop-shadow-2xl ml-1 mt-8"
           />
         </div>
+      </div>
+
+      {/* GIF menuang, disejajarkan dengan baris stat card */}
+      <div className="pointer-events-none absolute -right-16 top-[170px] hidden w-72 lg:block xl:w-80">
+        <img
+          src={menuang}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="relative w-full drop-shadow-2xl"
+        />
       </div>
 
       <div className="section-shell relative">
         <SectionHeading tone="ink" title="Kenalan Yuk Sama Gressoy" />
 
-        {/* Versi mobile/tablet: tangan menyembul dari kiri */}
+        {/* Versi mobile/tablet: kedelai + cup & gelas menyembul dari kiri */}
         <Reveal className="lg:hidden">
-          <div className="relative -ml-10 mb-2 mt-6 w-36 sm:w-44">
+          <div className="relative -ml-10 mb-2 mt-6 w-36 pt-14 sm:w-44 sm:pt-16">
             <img
-              src={soybeanHand}
-              alt="Kedelai pilihan di telapak tangan"
+              src={kedelai}
+              alt=""
+              aria-hidden="true"
               loading="lazy"
-              className="relative w-full drop-shadow-2xl"
+              style={pourMask}
+              className="absolute -top-4 left-10 w-24 -rotate-3 opacity-95 sm:w-28"
             />
+            <div className="relative ml-auto flex w-fit translate-x-6 -translate-y-4 items-end">
+              <div className="animate-float-slow"></div>
+                <img
+                  src={cup}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="w-16 drop-shadow-2xl sm:w-[120px]"
+                />
+                <img
+                  src={gelas}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="mb-1 ml-1 mt-8 w-14 rotate-[10deg] drop-shadow-2xl sm:w-[110px]"
+                />
+            </div>
           </div>
         </Reveal>
 
@@ -127,33 +148,16 @@ export default function AboutUsSection() {
           ))}
         </div>
 
-        {/* Versi mobile/tablet dari cup + gelas pojok kanan-bawah, kedelai menabur dari atas */}
-        <Reveal className="lg:hidden" delay={160}>
-          <div className="relative ml-auto mt-10 w-36 pt-14 sm:w-44 sm:pt-16">
+        {/* Versi mobile/tablet: GIF menuang di pojok kanan-bawah */}
+        <Reveal className="lg:hidden" delay={160}> 
+          <div className="relative -mr-5 ml-auto mt-4 h-40 w-40 sm:h-44 sm:w-44">
             <img
-              src={kedelai}
+              src={menuang}
               alt=""
               aria-hidden="true"
               loading="lazy"
-              style={pourMask}
-              className="absolute -top-2 right-4 w-24 -rotate-3 opacity-95 sm:w-28"
+              className="animate-float-slow absolute -bottom-24 right-0 w-40 sm:w-52 drop-shadow-2xl"
             />
-            <div className="relative flex items-end justify-end">
-              <img
-                src={gelas}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                className="w-16 -rotate-6 drop-shadow-2xl sm:w-20"
-              />
-              <img
-                src={cup}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                className="animate-float-slow -ml-3 w-20 rotate-3 drop-shadow-2xl sm:w-24"
-              />
-            </div>
           </div>
         </Reveal>
       </div>

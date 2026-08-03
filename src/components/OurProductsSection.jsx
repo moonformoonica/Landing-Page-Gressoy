@@ -17,7 +17,7 @@ export default function OurProductsSection() {
   }, [category, query]);
 
   return (
-    <section id="our-products" className="bg-cream-50 py-16 sm:py-20">
+    <section id="our-products" className="bg-cream-50 py-16 sm:py-20 scroll-mt-[64px]">
       <div className="section-shell">
         <SectionHeading
           title="Our Products"
