@@ -1,16 +1,13 @@
 import { useRef, useState } from 'react'
 import Reveal from './Reveal.jsx'
 import etalaseVid from '../assets/video/diracik-segar.mp4'
-import etalasePoster from '../assets/video/etalase-poster.jpg'
 import olahVid from '../assets/video/olah-kedelai.mp4'
-import olahPoster from '../assets/video/olah-kedelai-poster.jpg'
 import diracikVid from '../assets/video/diracik2.mp4'
-import diracikPoster from '../assets/video/diracik-poster.jpg'
 
 const CLIPS = [
-  { src: etalaseVid, poster: etalasePoster, label: 'Etalase Kami', tilt: '-rotate-2' },
-  { src: olahVid, poster: olahPoster, label: 'Olah Kedelai Pilihan', tilt: '-translate-y-2 scale-[1.05] sm:-translate-y-4' },
-  { src: diracikVid, poster: diracikPoster, label: 'Diracik Segar', tilt: 'rotate-2' },
+  { src: etalaseVid, label: 'Etalase Kami', tilt: '-rotate-2' },
+  { src: olahVid, label: 'Olah Kedelai Pilihan', tilt: '-translate-y-2 scale-[1.05] sm:-translate-y-4' },
+  { src: diracikVid, label: 'Diracik Segar', tilt: 'rotate-2' },
 ]
 
 export default function VideoShowcase() {
