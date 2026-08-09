@@ -2,8 +2,8 @@ import { CONTACT } from "../data/contact.js";
 import Reveal from "./Reveal.jsx";
 import VideoShowcase from "./VideoShowcase.jsx";
 import { WhatsappIcon } from "./icons.jsx";
-import mascot from "../assets/mascot.png";
-import kedelai from "../assets/kedelai.png";
+import mascot from "../assets/mascot.webp";
+import kedelai from "../assets/kedelai.webp";
 
 // Mask lembut supaya taburan kedelai memudar di tepinya.
 const softMask = {

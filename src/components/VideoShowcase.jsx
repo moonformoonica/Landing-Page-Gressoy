@@ -1,18 +1,139 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Reveal from './Reveal.jsx'
-import etalaseVid from '../assets/video/diracik2.mp4'
-import olahVid from '../assets/video/olah-kedelai.mp4'
-import diracikVid from '../assets/video/diracik-segar.mp4'
+import etalaseVid from '../assets/video/diracik2-web.mp4'
+import etalasePoster from '../assets/video/diracik2-poster.jpg'
+import olahVid from '../assets/video/olah-kedelai-web.mp4'
+import olahPoster from '../assets/video/olah-kedelai-poster.jpg'
+import diracikVid from '../assets/video/diracik-segar-web.mp4'
+import diracikPoster from '../assets/video/diracik-segar-poster.jpg'
 
 const CLIPS = [
-  { src: etalaseVid, label: 'Etalase Kami', tilt: '-rotate-2' },
-  { src: olahVid, label: 'Olah Kedelai Pilihan', tilt: '-translate-y-2 scale-[1.05] sm:-translate-y-4' },
-  { src: diracikVid, label: 'Diracik Segar', tilt: 'rotate-2' },
+  { src: etalaseVid, poster: etalasePoster, label: 'Etalase Kami', tilt: '-rotate-2' },
+  { src: olahVid, poster: olahPoster, label: 'Olah Kedelai Pilihan', tilt: '-translate-y-2 scale-[1.05] sm:-translate-y-4' },
+  { src: diracikVid, poster: diracikPoster, label: 'Diracik Segar', tilt: 'rotate-2' },
 ]
 
+// Selisih maksimal antar video sebelum dipaksa sejajar lagi (detik).
+const SYNC_TOLERANCE = 0.4
+// Kalau ada video yang lama siapnya, jangan tahan yang lain selamanya.
+const START_TIMEOUT = 4000
+
+// Jangan tarik ~10 MB video kalau pengunjung minta hemat kuota atau
+// mematikan animasi; tampilkan poster + tombol putar saja.
+function shouldAutoStart() {
+  if (typeof window === 'undefined') return false
+  if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return false
+  if (navigator.connection?.saveData) return false
+  return true
+}
+
 export default function VideoShowcase() {
+  const containerRef = useRef(null)
   const videoRefs = useRef([])
+  const manualStartRef = useRef(null)
+  const [autoStart] = useState(shouldAutoStart)
+  const [needsTap, setNeedsTap] = useState(!autoStart)
   const [mutedStates, setMutedStates] = useState(CLIPS.map(() => true))
+
+  // Ketiga video baru diputar setelah semuanya siap, biar mulainya barengan.
+  // Setelah jalan, video pertama dipakai sebagai acuan supaya tidak melenceng
+  // saat looping (durasinya tidak persis sama).
+  useEffect(() => {
+    const videos = videoRefs.current.filter(Boolean)
+    if (videos.length !== CLIPS.length) return
+
+    const master = videos[0]
+    let started = false
+    let visible = true
+
+    const playAll = () => {
+      videos.forEach((v) => {
+        const p = v.play()
+        if (!p) return
+        // Safari iOS (Low Power Mode) bisa menolak autoplay walau muted.
+        p.then(() => setNeedsTap(false)).catch(() => setNeedsTap(true))
+      })
+    }
+
+    const rewindAll = () => {
+      videos.forEach((v) => {
+        v.currentTime = 0
+      })
+    }
+
+    const startAll = () => {
+      if (started) return
+      // HAVE_FUTURE_DATA: sudah cukup buffer untuk mulai jalan
+      if (!videos.every((v) => v.readyState >= 3)) return
+      started = true
+      rewindAll()
+      if (visible) playAll()
+    }
+
+    const resync = () => {
+      if (!started) return
+      for (let i = 1; i < videos.length; i += 1) {
+        const v = videos[i]
+        if (v.seeking) continue
+        if (Math.abs(v.currentTime - master.currentTime) > SYNC_TOLERANCE) {
+          v.currentTime = master.currentTime
+        }
+      }
+    }
+
+    // Dipakai tombol putar: sentuhan pengguna selalu lolos kebijakan autoplay.
+    manualStartRef.current = () => {
+      started = true
+      visible = true
+      rewindAll()
+      playAll()
+    }
+
+    master.addEventListener('timeupdate', resync)
+
+    // Hemat CPU: berhenti decoding saat showcase tidak kelihatan.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting
+        if (!started) return
+        if (visible) {
+          resync()
+          playAll()
+        } else {
+          videos.forEach((v) => v.pause())
+        }
+      },
+      { threshold: 0.1 },
+    )
+    if (containerRef.current) observer.observe(containerRef.current)
+
+    if (!autoStart) {
+      return () => {
+        observer.disconnect()
+        master.removeEventListener('timeupdate', resync)
+        manualStartRef.current = null
+      }
+    }
+
+    // Jaring pengaman: kalau ada satu video yang lambat, tetap mulai.
+    const timer = window.setTimeout(() => {
+      if (started) return
+      started = true
+      rewindAll()
+      if (visible) playAll()
+    }, START_TIMEOUT)
+
+    videos.forEach((v) => v.addEventListener('canplay', startAll))
+    startAll()
+
+    return () => {
+      window.clearTimeout(timer)
+      observer.disconnect()
+      videos.forEach((v) => v.removeEventListener('canplay', startAll))
+      master.removeEventListener('timeupdate', resync)
+      manualStartRef.current = null
+    }
+  }, [autoStart])
 
   const toggleMute = (index) => {
     const video = videoRefs.current[index]
@@ -31,7 +152,7 @@ export default function VideoShowcase() {
   }
 
   return (
-    <div className="mx-auto grid w-full max-w-5xl grid-cols-3 gap-2.5 sm:gap-5">
+    <div ref={containerRef} className="mx-auto grid w-full max-w-5xl grid-cols-3 gap-2.5 sm:gap-5">
       {CLIPS.map((clip, i) => (
         <Reveal key={clip.label} delay={i * 120}>
           <figure
@@ -43,13 +164,28 @@ export default function VideoShowcase() {
                 className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 src={clip.src}
                 poster={clip.poster}
-                autoPlay
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload={autoStart ? 'auto' : 'metadata'}
+                disablePictureInPicture
                 aria-label={`Video ${clip.label} GresSOY`}
               />
+
+              {needsTap && (
+                <button
+                  type="button"
+                  onClick={() => manualStartRef.current?.()}
+                  aria-label="Putar video"
+                  className="absolute inset-0 flex items-center justify-center bg-black/25 transition hover:bg-black/35"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-soya-800 shadow-card sm:h-12 sm:w-12">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 h-5 w-5 sm:h-6 sm:w-6">
+                      <path d="M8 5v14l11-7L8 5Z" />
+                    </svg>
+                  </span>
+                </button>
+              )}
 
               <button
                 type="button"

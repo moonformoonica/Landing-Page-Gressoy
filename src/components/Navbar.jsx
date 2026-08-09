@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import logo from '../assets/logo-gressoy.png'
+import logo from '../assets/logo-gressoy.webp'
 
 const NAV_ITEMS = [
   { id: 'about-us', label: 'About Us' },

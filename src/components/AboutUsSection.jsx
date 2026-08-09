@@ -1,10 +1,10 @@
 import SectionHeading from "./SectionHeading.jsx";
 import Reveal from "./Reveal.jsx";
 import { CONTACT, LOCATION } from "../data/contact.js";
-import cup from "../assets/cup.png";
-import gelas from "../assets/gelas.png";
-import menuang from "../assets/video/menuangkan.gif";
-import kedelai from "../assets/kedelai.png";
+import cup from "../assets/cup.webp";
+import gelas from "../assets/gelas.webp";
+import menuang from "../assets/video/menuangkan-web.webp";
+import kedelai from "../assets/kedelai.webp";
 
 // Aliran kedelai menabur dari atas (memudar di ujung bawah).
 const pourMask = {
