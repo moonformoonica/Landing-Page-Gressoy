@@ -82,20 +82,20 @@ export default function AboutUsSection() {
             />
             <div className="relative ml-auto flex w-fit translate-x-6 -translate-y-4 items-end">
               <div className="animate-float-slow"></div>
-                <img
-                  src={cup}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                  className="w-16 drop-shadow-2xl sm:w-[120px]"
-                />
-                <img
-                  src={gelas}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                  className="mb-1 ml-1 mt-8 w-14 rotate-[10deg] drop-shadow-2xl sm:w-[110px]"
-                />
+              <img
+                src={cup}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="w-16 drop-shadow-2xl sm:w-[120px]"
+              />
+              <img
+                src={gelas}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="mb-1 ml-1 mt-8 w-14 rotate-[10deg] drop-shadow-2xl sm:w-[110px]"
+              />
             </div>
           </div>
         </Reveal>
@@ -105,12 +105,13 @@ export default function AboutUsSection() {
           <div className="mx-auto max-w-2xl rounded-[2.5rem] bg-white/95 p-7 shadow-card sm:p-9 lg:p-10">
             <p className="text-base leading-relaxed text-soya-800/90 sm:text-lg">
               Semuanya berawal di Purwokerto tahun 2019, waktu susu kedelai
-              kekinian masih jarang. Sejak itu kami setia mengolah kedelai
-              pilihan jadi 16 rasa yang benar-benar bebas bau langu. Manisnya
-              dari gula kelapa alami rendah kalori, jadi tetap enak walau kamu lagi
-              jaga gula. Nggak cocok susu sapi? Punya kami ramah di perut, kok.
-              Tinggal cari <strong>"Gressoy"</strong> di Gofood, Grabfood, atau
-              ShopeeFood, atau mampir langsung ke outlet kami untuk Dine In maupun Take Away :)
+              kekinian masih jarang ditemuin di sini. Sejak itu kami setia
+              mengolah kedelai pilihan jadi 16 rasa yang benar-benar bebas bau
+              langu. Manisnya dari gula kelapa alami rendah kalori, jadi tetap
+              enak walau kamu lagi jaga asupan gula. Nggak cocok susu sapi? Susu
+              kedelai kami ramah di perut, kok. Tinggal cari "Gressoy" di
+              Gofood, Grabfood, atau ShopeeFood, atau mampir langsung ke outlet
+              kami untuk Dine In maupun Take Away :)
             </p>
 
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
@@ -149,7 +150,7 @@ export default function AboutUsSection() {
         </div>
 
         {/* Versi mobile/tablet: GIF menuang di pojok kanan-bawah */}
-        <Reveal className="lg:hidden" delay={160}> 
+        <Reveal className="lg:hidden" delay={160}>
           <div className="relative -mr-5 ml-auto mt-4 h-40 w-40 sm:h-44 sm:w-44">
             <img
               src={menuang}

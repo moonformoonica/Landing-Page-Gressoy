@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react'
 import Reveal from './Reveal.jsx'
-import etalaseVid from '../assets/video/diracik-segar.mp4'
+import etalaseVid from '../assets/video/diracik2.mp4'
 import olahVid from '../assets/video/olah-kedelai.mp4'
-import diracikVid from '../assets/video/diracik2.mp4'
+import diracikVid from '../assets/video/diracik-segar.mp4'
 
 const CLIPS = [
   { src: etalaseVid, label: 'Etalase Kami', tilt: '-rotate-2' },
