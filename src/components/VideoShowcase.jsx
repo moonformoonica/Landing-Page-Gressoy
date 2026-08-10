@@ -1,17 +1,27 @@
 import { useEffect, useRef, useState } from 'react'
 import Reveal from './Reveal.jsx'
-import etalaseVid from '../assets/video/diracik2-web.mp4'
+import etalaseHd from '../assets/video/diracik2-web.mp4'
+import etalaseSm from '../assets/video/diracik2-mobile.mp4'
 import etalasePoster from '../assets/video/diracik2-poster.jpg'
-import olahVid from '../assets/video/olah-kedelai-web.mp4'
+import olahHd from '../assets/video/olah-kedelai-web.mp4'
+import olahSm from '../assets/video/olah-kedelai-mobile.mp4'
 import olahPoster from '../assets/video/olah-kedelai-poster.jpg'
-import diracikVid from '../assets/video/diracik-segar-web.mp4'
+import diracikHd from '../assets/video/diracik-segar-web.mp4'
+import diracikSm from '../assets/video/diracik-segar-mobile.mp4'
 import diracikPoster from '../assets/video/diracik-segar-poster.jpg'
 
 const CLIPS = [
-  { src: etalaseVid, poster: etalasePoster, label: 'Etalase Kami', tilt: '-rotate-2' },
-  { src: olahVid, poster: olahPoster, label: 'Olah Kedelai Pilihan', tilt: '-translate-y-2 scale-[1.05] sm:-translate-y-4' },
-  { src: diracikVid, poster: diracikPoster, label: 'Diracik Segar', tilt: 'rotate-2' },
+  { hd: etalaseHd, sm: etalaseSm, poster: etalasePoster, label: 'Etalase Kami', tilt: '-rotate-2' },
+  { hd: olahHd, sm: olahSm, poster: olahPoster, label: 'Olah Kedelai Pilihan', tilt: '-translate-y-2 scale-[1.05] sm:-translate-y-4' },
+  { hd: diracikHd, sm: diracikSm, poster: diracikPoster, label: 'Diracik Segar', tilt: 'rotate-2' },
 ]
+
+// Di bawah breakpoint sm tiap kartu cuma ~110px, jadi versi 540p sudah lebih
+// dari cukup dan HP tidak perlu mengunduh ~43 MB. Desktop tetap 1080x1440.
+function pickQuality() {
+  if (typeof window === 'undefined') return 'hd'
+  return window.innerWidth >= 640 ? 'hd' : 'sm'
+}
 
 // Selisih maksimal antar video sebelum dipaksa sejajar lagi (detik).
 const SYNC_TOLERANCE = 0.4
@@ -32,6 +42,7 @@ export default function VideoShowcase() {
   const videoRefs = useRef([])
   const manualStartRef = useRef(null)
   const [autoStart] = useState(shouldAutoStart)
+  const [quality] = useState(pickQuality)
   const [needsTap, setNeedsTap] = useState(!autoStart)
   const [mutedStates, setMutedStates] = useState(CLIPS.map(() => true))
 
@@ -162,7 +173,7 @@ export default function VideoShowcase() {
               <video
                 ref={(el) => (videoRefs.current[i] = el)}
                 className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                src={clip.src}
+                src={clip[quality]}
                 poster={clip.poster}
                 muted
                 loop
