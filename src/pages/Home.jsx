@@ -4,6 +4,7 @@ import AboutUsSection from "../components/AboutUsSection.jsx";
 import OurProductsSection from "../components/OurProductsSection.jsx";
 import ContactSection from "../components/ContactSection.jsx";
 import Footer from "../components/Footer.jsx";
+import BackgroundMusic from "../components/BackgroundMusic.jsx";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <BackgroundMusic />
     </>
   );
 }
