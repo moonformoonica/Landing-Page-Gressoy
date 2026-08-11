@@ -1,9 +1,12 @@
 import { useEffect, useRef } from 'react'
 import backsoundSrc from '../assets/audio/backsound.mp3'
 
-// Volume backsound sengaja pelan supaya tidak mengagetkan dan tetap kalah
-// dari suara video kalau pengunjung membukanya.
-const VOLUME = 0.32
+// Angka ini relatif terhadap volume media perangkat, bukan volume mutlak:
+// 0.6 artinya 60% dari volume HP/laptop pengunjung. Dinaikkan dari 0.32 karena
+// di perangkat yang volumenya tidak penuh, 32% praktis tidak kedengaran.
+// Tidak perlu terlalu pelan demi video: begitu ada video bersuara, backsound
+// otomatis berhenti, bukan sekadar mengecil.
+const VOLUME = 0.6
 
 // Interaksi pertama dipakai untuk melewati blokir autoplay bersuara. Sengaja
 // banyak: yang dihitung "user activation" beda-beda tiap browser (mouse lewat
