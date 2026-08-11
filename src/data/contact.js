@@ -12,7 +12,7 @@ export const LOCATION = {
     "Jawa Tengah 53116",
   ],
   // Angka cadangan. Yang tampil di situs diambil live dari /api/rating; dua
-  // nilai ini hanya dipakai selama jawaban belum datang atau kalau Places API
+  // nilai ini hanya dipakai selama jawaban belum datang atau kalau Google
   // sedang tidak bisa dihubungi (lihat src/hooks/useLiveRating.js).
   rating: 5.0,
   reviewCount: 358,

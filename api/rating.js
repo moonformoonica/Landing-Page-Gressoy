@@ -1,67 +1,79 @@
 /**
- * Rating & jumlah ulasan Gressoy, diambil langsung dari Google Places API.
+ * Rating & jumlah ulasan Gressoy, diambil langsung dari Google.
  *
- * Dijalankan sebagai serverless function di Vercel, bukan di browser, supaya
- * API key tidak pernah ikut terkirim ke pengunjung. Jawabannya di-cache di CDN
- * Vercel selama 1 jam, jadi Google cuma dihubungi sekali per jam untuk seluruh
- * pengunjung — kuota nyaris tidak terpakai walau situsnya ramai.
+ * Sumbernya halaman embed peta milik Google sendiri — yang sama persis dengan
+ * yang dipakai fitur "Bagikan > Sematkan peta". Endpoint ini publik: tanpa API
+ * key, tanpa billing account, jadi tidak ada biaya sama sekali. Di dalam
+ * jawabannya angka rating dan jumlah ulasan tertulis apa adanya, contoh:
  *
- * Butuh Environment Variable: GOOGLE_PLACES_API_KEY
+ *     ...Jawa Tengah 53116"],5,"358 ulasan","https://search.google.com/...
+ *
+ * Dijalankan di server, bukan di browser, karena Google tidak mengizinkan
+ * halaman itu dibaca lintas domain dari sisi klien.
+ *
+ * Catatan kejujuran: format di atas tidak didokumentasikan Google, jadi suatu
+ * saat bisa berubah tanpa pemberitahuan. Kalau itu terjadi, endpoint ini
+ * menjawab 502 dan situs otomatis kembali memakai angka cadangan di
+ * contact.js — tidak ada tampilan yang rusak, cuma angkanya berhenti update.
  */
 
-// Place ID outlet Gressoy. Sudah dicocokkan dengan URL Maps resminya:
-// kedua CID (0x2e655f3a2599ad45 : 0x70faecc374ab6d9c) ada di dalam ID ini.
-const PLACE_ID = "ChIJRa2ZJTpfZS4RnG2rdMPs-nA";
+// Pasangan CID outlet Gressoy, diambil dari URL Google Maps resminya.
+const CID = "0x2e655f3a2599ad45:0x70faecc374ab6d9c";
+const LAT = -7.4284743;
+const LNG = 109.2380434;
 
-// Places API (New). Hanya dua field yang diminta supaya masuk tarif termurah.
-const PLACE_URL = `https://places.googleapis.com/v1/places/${PLACE_ID}`;
-const FIELD_MASK = "rating,userRatingCount";
+const EMBED_URL =
+  "https://www.google.com/maps/embed?pb=" +
+  `!1m18!1m12!1m3!1d1000!2d${LNG}!3d${LAT}` +
+  "!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s" +
+  encodeURIComponent(CID) +
+  "!2sGressoy!5e0!3m2!1sid!2sid!4v0!5m2!1sid!2sid";
+
+// Menangkap "...,5,"358 ulasan"..." — rating berupa angka JSON (titik sebagai
+// desimal), jumlah ulasan berupa teks yang bisa berpemisah ribuan ("1.358").
+const RATING_RE = /,(\d(?:\.\d+)?),"([\d.,]+)\s*(?:ulasan|reviews?)"/;
+
+const UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+  "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 
 export default async function handler(req, res) {
-  const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-
-  // Belum dikonfigurasi. Sengaja bukan error keras: frontend akan diam-diam
-  // memakai angka cadangan di contact.js, jadi halaman tetap normal.
-  if (!apiKey) {
-    return res
-      .status(503)
-      .json({ error: "GOOGLE_PLACES_API_KEY belum diset di Environment Variable" });
-  }
-
   try {
-    const upstream = await fetch(PLACE_URL, {
-      headers: {
-        "X-Goog-Api-Key": apiKey,
-        "X-Goog-FieldMask": FIELD_MASK,
-      },
+    const upstream = await fetch(EMBED_URL, {
+      headers: { "User-Agent": UA, "Accept-Language": "id-ID,id;q=0.9" },
     });
 
     if (!upstream.ok) {
-      const detail = await upstream.text();
-      return res.status(502).json({
-        error: "Places API menolak permintaan",
-        status: upstream.status,
-        detail: detail.slice(0, 300),
-      });
+      return res
+        .status(502)
+        .json({ error: "Google menolak permintaan", status: upstream.status });
     }
 
-    const place = await upstream.json();
-    const rating = place.rating;
-    const reviewCount = place.userRatingCount;
+    const html = await upstream.text();
+    const found = html.match(RATING_RE);
 
-    if (typeof rating !== "number" || typeof reviewCount !== "number") {
-      return res.status(502).json({ error: "Jawaban Places API tidak lengkap" });
+    if (!found) {
+      return res
+        .status(502)
+        .json({ error: "Format jawaban Google berubah, angka tidak terbaca" });
     }
 
-    // Cache hanya dipasang di jalur sukses; error tidak boleh ikut mengendap
-    // di CDN. stale-while-revalidate: kalau sudah lewat 1 jam, pengunjung
-    // tetap dapat angka lama seketika sambil versi barunya diambil di belakang.
+    const rating = Number(found[1]);
+    const reviewCount = Number(found[2].replace(/\D/g, ""));
+
+    // Jaring pengaman kalau yang tertangkap ternyata angka lain.
+    if (!(rating > 0 && rating <= 5) || !(reviewCount > 0)) {
+      return res.status(502).json({ error: "Angka yang terbaca tidak masuk akal" });
+    }
+
+    // Cache hanya di jalur sukses; error tidak boleh mengendap di CDN.
+    // Google cuma dihubungi sekali per jam untuk seluruh pengunjung.
     res.setHeader(
       "Cache-Control",
       "public, s-maxage=3600, stale-while-revalidate=86400",
     );
     return res.status(200).json({ rating, reviewCount });
   } catch {
-    return res.status(502).json({ error: "Gagal menghubungi Places API" });
+    return res.status(502).json({ error: "Gagal menghubungi Google" });
   }
 }

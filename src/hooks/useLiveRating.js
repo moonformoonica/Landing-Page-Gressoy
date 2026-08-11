@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
  *
  * Angka cadangan dari contact.js dipakai selama jawaban belum datang, dan tetap
  * dipakai kalau endpointnya tidak tersedia — misalnya waktu `npm run dev` yang
- * memang tidak menjalankan serverless function, atau kalau API key belum diisi.
- * Jadi kartu info tidak pernah kosong dan tidak pernah menampilkan error.
+ * memang tidak menjalankan serverless function, atau kalau Google sedang tidak
+ * bisa dihubungi. Jadi kartu info tidak pernah kosong dan tidak pernah
+ * menampilkan error.
  */
 export default function useLiveRating(fallbackRating, fallbackReviewCount) {
   const [live, setLive] = useState(null);
