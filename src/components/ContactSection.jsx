@@ -11,6 +11,7 @@ import {
   ShopeeFoodIcon,
 } from "./icons.jsx";
 import { CONTACT, LOCATION } from "../data/contact.js";
+import useLiveRating from "../hooks/useLiveRating.js";
 
 const PLATFORM_ICONS = {
   Gofood: GofoodIcon,
@@ -19,6 +20,13 @@ const PLATFORM_ICONS = {
 };
 
 export default function ContactSection() {
+  // Angka di contact.js jadi cadangan; kalau /api/rating menjawab, angkanya
+  // ditimpa dengan yang terbaru dari Google.
+  const { rating, reviewCount } = useLiveRating(
+    LOCATION.rating,
+    LOCATION.reviewCount,
+  );
+
   return (
     <section id="contact-us" className="bg-cream-50 py-16 sm:py-20">
       <div className="section-shell space-y-10">
@@ -32,8 +40,8 @@ export default function ContactSection() {
           <MapEmbed
             name={LOCATION.name}
             addressLines={LOCATION.addressLines}
-            rating={LOCATION.rating}
-            reviewCount={LOCATION.reviewCount}
+            rating={rating}
+            reviewCount={reviewCount}
             mapsUrl={LOCATION.mapsUrl}
             embedSrc={LOCATION.embedSrc}
           />

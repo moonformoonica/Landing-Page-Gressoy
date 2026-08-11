@@ -11,6 +11,9 @@ export const LOCATION = {
     "Kabupaten Banyumas,",
     "Jawa Tengah 53116",
   ],
+  // Angka cadangan. Yang tampil di situs diambil live dari /api/rating; dua
+  // nilai ini hanya dipakai selama jawaban belum datang atau kalau Places API
+  // sedang tidak bisa dihubungi (lihat src/hooks/useLiveRating.js).
   rating: 5.0,
   reviewCount: 358,
   hoursTime: "08.00 - 22.00 WIB,",

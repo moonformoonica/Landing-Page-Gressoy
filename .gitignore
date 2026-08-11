@@ -21,3 +21,5 @@ pnpm-debug.log*
 # env
 .env
 .env.*
+# contoh isian (tanpa nilai rahasia) tetap ikut ke repo
+!.env.example
