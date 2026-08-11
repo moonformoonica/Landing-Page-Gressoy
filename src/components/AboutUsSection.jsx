@@ -86,14 +86,18 @@ export default function AboutUsSection() {
               className="absolute -top-4 left-10 w-24 -rotate-3 opacity-95 sm:w-28"
             />
             <div className="relative ml-auto flex w-fit translate-x-6 -translate-y-4 items-end">
-              <div className="animate-float-slow"></div>
-              <img
-                src={cup}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                className="w-16 drop-shadow-2xl sm:w-[120px]"
-              />
+              {/* Cup dibungkus div ber-animasi, sama seperti versi desktop:
+                  sebelumnya class float-nya nyangkut di div kosong sehingga
+                  cup di mobile diam saja. */}
+              <div className="animate-float-slow">
+                <img
+                  src={cup}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="w-16 drop-shadow-2xl sm:w-[120px]"
+                />
+              </div>
               <img
                 src={gelas}
                 alt=""
@@ -160,7 +164,7 @@ export default function AboutUsSection() {
             melewatkannya sedikit dari tepi layar, jadi sisi lengan yang
             terpotong jatuh di luar layar seperti versi desktop. */}
         <Reveal className="lg:hidden" delay={160}>
-          <div className="-mb-6 -mr-6 mt-4 flex justify-end sm:-mr-8">
+          <div className="-mb-6 -mr-6 mt-10 flex justify-end sm:-mr-8 sm:mt-12">
             <img
               src={menuang}
               alt=""
