@@ -163,7 +163,8 @@ export default function VideoShowcase() {
   }
 
   return (
-    <div ref={containerRef} className="mx-auto grid w-full max-w-5xl grid-cols-3 gap-2.5 sm:gap-5">
+    // id dipakai layar sambutan (WelcomeGate) sebagai tujuan scroll.
+    <div id="showcase" ref={containerRef} className="mx-auto grid w-full max-w-5xl grid-cols-3 gap-2.5 sm:gap-5">
       {CLIPS.map((clip, i) => (
         <Reveal key={clip.label} delay={i * 120}>
           <figure

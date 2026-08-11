@@ -11,6 +11,7 @@ import {
   ShopeeFoodIcon,
 } from "./icons.jsx";
 import { CONTACT, LOCATION } from "../data/contact.js";
+import useLiveRating from "../hooks/useLiveRating.js";
 
 const PLATFORM_ICONS = {
   Gofood: GofoodIcon,
@@ -19,6 +20,13 @@ const PLATFORM_ICONS = {
 };
 
 export default function ContactSection() {
+  // Dipakai kartu versi layar sempit di MapEmbed. Angka di contact.js jadi
+  // cadangan; kalau /api/rating menjawab, angkanya ditimpa yang terbaru.
+  const { rating, reviewCount } = useLiveRating(
+    LOCATION.rating,
+    LOCATION.reviewCount,
+  );
+
   return (
     <section id="contact-us" className="bg-cream-50 py-16 sm:py-20">
       <div className="section-shell space-y-10">
@@ -27,11 +35,17 @@ export default function ContactSection() {
           subtitle="Mampir langsung ke outlet kami di Purwokerto, atau sapa kami lewat kanal di bawah."
         />
 
-        {/* Peta full-width. Rating & jumlah ulasan tidak ditampilkan terpisah:
-            kartu bawaan Google di dalam peta sudah memuatnya, dan angkanya
-            selalu live tanpa perlu kita ambil sendiri. */}
+        {/* Peta full-width. Di layar lebar kartu detailnya digambar Google
+            sendiri; di layar sempit dipakai kartu kita (lihat MapEmbed). */}
         <Reveal>
-          <MapEmbed name={LOCATION.name} embedSrc={LOCATION.embedSrc} />
+          <MapEmbed
+            name={LOCATION.name}
+            addressLines={LOCATION.addressLines}
+            rating={rating}
+            reviewCount={reviewCount}
+            mapsUrl={LOCATION.mapsUrl}
+            embedSrc={LOCATION.embedSrc}
+          />
         </Reveal>
 
         {/* Info kontak pendukung */}
