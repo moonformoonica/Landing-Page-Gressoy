@@ -23,8 +23,14 @@ export const LOCATION = {
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Gressoy%20Purwokerto&query_place_id=ChIJRa2ZJTpfZS4RnG2rdMPs-nA",
 
+  // Embed mode "tempat", bukan sekadar koordinat: dengan begini Google
+  // menampilkan kartu Gressoy yang sebenarnya (nama, alamat, rating, tombol
+  // rute) dan bukan kartu titik koordinat kosong. Bagian !1s...%3A... itu
+  // pasangan CID Gressoy, diambil dari URL Google Maps resminya.
+  // Kalau suatu saat perlu diganti: buka Maps > Bagikan > Sematkan peta, lalu
+  // salin isi src="..." dari kode yang diberikan Google.
   embedSrc:
-    "https://www.google.com/maps?q=-7.4284743,109.2380434&z=17&output=embed",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d109.2380434!3d-7.4284743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655f3a2599ad45%3A0x70faecc374ab6d9c!2sGressoy!5e0!3m2!1sid!2sid!4v0!5m2!1sid!2sid",
 };
 
 export const CONTACT = {

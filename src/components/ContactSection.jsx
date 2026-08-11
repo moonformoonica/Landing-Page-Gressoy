@@ -30,21 +30,36 @@ export default function ContactSection() {
   return (
     <section id="contact-us" className="bg-cream-50 py-16 sm:py-20">
       <div className="section-shell space-y-10">
-        <SectionHeading
-          title="Our Location"
-          subtitle="Mampir langsung ke outlet kami di Purwokerto, atau sapa kami lewat kanal di bawah."
-        />
-
-        {/* Peta full-width + info card overlay */}
-        <Reveal>
-          <MapEmbed
-            name={LOCATION.name}
-            addressLines={LOCATION.addressLines}
-            rating={rating}
-            reviewCount={reviewCount}
-            mapsUrl={LOCATION.mapsUrl}
-            embedSrc={LOCATION.embedSrc}
+        <div>
+          <SectionHeading
+            title="Our Location"
+            subtitle="Mampir langsung ke outlet kami di Purwokerto, atau sapa kami lewat kanal di bawah."
           />
+
+          {/* Rating live dari Google (lihat api/rating.js). Ditaruh di sini,
+              bukan menimpa peta, supaya tidak bertumpuk dengan kartu bawaan
+              Google di dalam iframe. -mt menariknya masuk ke jarak bawah
+              heading biar tetap terbaca satu kesatuan dengan judulnya. */}
+          <a
+            href={LOCATION.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Rating ${rating} dari 5 bintang, ${reviewCount} ulasan di Google Maps (tab baru)`}
+            className="-mt-7 flex items-center justify-center gap-2 text-sm text-soya-800/75 transition-colors hover:text-soya-700"
+          >
+            <span className="font-semibold text-soya-800">
+              {rating.toFixed(1)}
+            </span>
+            <span className="text-gold-500" aria-hidden="true">
+              {"★".repeat(Math.round(rating))}
+            </span>
+            <span>dari {reviewCount} ulasan di Google</span>
+          </a>
+        </div>
+
+        {/* Peta full-width; kartu tempatnya digambar Google sendiri */}
+        <Reveal>
+          <MapEmbed name={LOCATION.name} embedSrc={LOCATION.embedSrc} />
         </Reveal>
 
         {/* Info kontak pendukung */}
