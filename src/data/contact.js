@@ -12,7 +12,7 @@ export const LOCATION = {
     "Jawa Tengah 53116",
   ],
   rating: 5.0,
-  reviewCount: 354,
+  reviewCount: 358,
   hoursTime: "08.00 - 22.00 WIB,",
   hoursDays: "setiap hari Senin-Sabtu",
 

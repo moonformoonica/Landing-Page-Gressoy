@@ -55,8 +55,15 @@ export default function AboutUsSection() {
         </div>
       </div>
 
-      {/* GIF menuang, disejajarkan dengan baris stat card */}
-      <div className="pointer-events-none absolute -right-16 top-[170px] hidden w-72 lg:block xl:w-80">
+      {/* GIF menuang. Seluruh kotaknya dijaga tetap di dalam viewport (tanpa
+          offset negatif) supaya tidak ada sisi yang kelihatan terpotong; ujung
+          lengan bajunya sudah memudar di file asset-nya sendiri. Dipatok dari
+          bawah section, bukan dari atas, biar sejajar dengan baris stat card
+          di semua lebar layar. Lebarnya menyesuaikan sisa ruang di kanan kartu
+          cerita supaya cangkirnya tidak tertutup kartu. Baru dipakai mulai xl:
+          di bawah itu sisa ruang kanan cuma ~64px, tidak cukup untuk berdiri
+          sendiri tanpa ketiban baris stat card. */}
+      <div className="pointer-events-none absolute bottom-14 right-0 hidden w-72 xl:block 2xl:w-[22rem]">
         <img
           src={menuang}
           alt=""
@@ -149,15 +156,18 @@ export default function AboutUsSection() {
           ))}
         </div>
 
-        {/* Versi mobile/tablet: GIF menuang di pojok kanan-bawah */}
-        <Reveal className="lg:hidden" delay={160}>
-          <div className="relative -mr-5 ml-auto mt-4 h-40 w-40 sm:h-44 sm:w-44">
+        {/* Versi mobile/tablet: GIF menuang di pojok kanan-bawah. Mengalir
+            normal (bukan absolute + offset negatif) supaya tidak pernah
+            tertusuk tepi layar maupun batas bawah section. -mb menariknya
+            sedikit masuk ke padding bawah, masih jauh dari tepi section. */}
+        <Reveal className="xl:hidden" delay={160}>
+          <div className="-mb-6 mt-4 flex justify-end">
             <img
               src={menuang}
               alt=""
               aria-hidden="true"
               loading="lazy"
-              className="animate-float-slow absolute -bottom-24 right-0 w-40 sm:w-52 drop-shadow-2xl"
+              className="animate-float-slow w-44 drop-shadow-2xl sm:w-56 lg:w-64"
             />
           </div>
         </Reveal>
