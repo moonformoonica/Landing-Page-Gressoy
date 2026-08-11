@@ -25,7 +25,10 @@ export default function WelcomeGate({ locked, onEnter }) {
   }, [locked]);
 
   return (
-    <section className="relative flex h-screen w-full flex-col items-center justify-center gap-8 overflow-hidden bg-gradient-to-br from-gold-400 via-sage-400 to-soya-700 px-6 text-center">
+    <section
+      id="welcome-gate"
+      className="relative flex h-screen w-full flex-col items-center justify-center gap-8 overflow-hidden bg-gradient-to-br from-gold-400 via-sage-400 to-soya-700 px-6 text-center"
+    >
       {/* Semburat terang di belakang logo biar bagian tengah tidak datar */}
       <div
         aria-hidden="true"
@@ -50,7 +53,7 @@ export default function WelcomeGate({ locked, onEnter }) {
       </button>
 
       <p className="relative font-display text-2xl font-bold text-soya-900 drop-shadow-[0_2px_10px_rgba(255,253,242,0.55)] sm:text-4xl">
-        Click aku untuk mampir!
+        Click the button above to scroll :)
       </p>
     </section>
   );
