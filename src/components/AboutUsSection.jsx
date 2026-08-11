@@ -55,15 +55,13 @@ export default function AboutUsSection() {
         </div>
       </div>
 
-      {/* GIF menuang. Seluruh kotaknya dijaga tetap di dalam viewport (tanpa
-          offset negatif) supaya tidak ada sisi yang kelihatan terpotong; ujung
-          lengan bajunya sudah memudar di file asset-nya sendiri. Dipatok dari
-          bawah section, bukan dari atas, biar sejajar dengan baris stat card
-          di semua lebar layar. Lebarnya menyesuaikan sisa ruang di kanan kartu
-          cerita supaya cangkirnya tidak tertutup kartu. Baru dipakai mulai xl:
-          di bawah itu sisa ruang kanan cuma ~64px, tidak cukup untuk berdiri
-          sendiri tanpa ketiban baris stat card. */}
-      <div className="pointer-events-none absolute bottom-14 right-0 hidden w-72 xl:block 2xl:w-[22rem]">
+      {/* GIF menuang. Ujung lengan bajunya memang terpotong lurus di file
+          asset-nya, jadi kotaknya sengaja dilewatkan sedikit dari tepi kanan
+          layar: potongannya jatuh di luar layar, sehingga terbaca sebagai
+          gambar yang menerus ke luar, bukan gambar yang kepotong.
+          Sejajar dengan kartu cerita (bukan baris stat card) karena di situ
+          sisa ruang kanannya paling lebar. */}
+      <div className="pointer-events-none absolute -right-16 top-[290px] hidden w-[19rem] lg:block xl:w-[21rem] 2xl:w-96">
         <img
           src={menuang}
           alt=""
@@ -158,16 +156,17 @@ export default function AboutUsSection() {
 
         {/* Versi mobile/tablet: GIF menuang di pojok kanan-bawah. Mengalir
             normal (bukan absolute + offset negatif) supaya tidak pernah
-            tertusuk tepi layar maupun batas bawah section. -mb menariknya
-            sedikit masuk ke padding bawah, masih jauh dari tepi section. */}
-        <Reveal className="xl:hidden" delay={160}>
-          <div className="-mb-6 mt-4 flex justify-end">
+            tertusuk batas bawah section. -mr membatalkan padding shell dan
+            melewatkannya sedikit dari tepi layar, jadi sisi lengan yang
+            terpotong jatuh di luar layar seperti versi desktop. */}
+        <Reveal className="lg:hidden" delay={160}>
+          <div className="-mb-6 -mr-6 mt-4 flex justify-end sm:-mr-8">
             <img
               src={menuang}
               alt=""
               aria-hidden="true"
               loading="lazy"
-              className="animate-float-slow w-44 drop-shadow-2xl sm:w-56 lg:w-64"
+              className="animate-float-slow w-44 drop-shadow-2xl sm:w-56"
             />
           </div>
         </Reveal>
