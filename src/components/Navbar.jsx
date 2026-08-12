@@ -16,12 +16,21 @@ const supportsSmoothScroll = () =>
   typeof document !== 'undefined' &&
   'scrollBehavior' in document.documentElement.style
 
+// Jarak napas antara garis bawah navbar dan judul section setelah mendarat.
+const HEADING_GAP = 30
+
 /**
- * Gulung ke sebuah section sampai tepi atasnya persis menempel di bawah navbar.
+ * Gulung ke sebuah section sampai judulnya berhenti sedikit di bawah navbar.
+ *
+ * Yang dijadikan patokan sengaja judulnya, bukan tepi atas section. Tiap
+ * section punya padding atas 80px; kalau tepi section yang ditempelkan ke
+ * navbar, seluruh padding itu ikut terlihat sebagai ruang kosong dan judulnya
+ * terlempar jauh ke bawah. Dengan berpatokan pada judul, jarak yang terlihat
+ * selalu sama (30px) berapa pun padding section-nya.
  *
  * Tinggi navbar diukur saat diklik, bukan ditulis tetap, karena navbar lebih
  * pendek di layar kecil daripada di desktop — kalau dipatok satu angka,
- * headingnya bisa ketutupan di satu ukuran layar dan terlalu turun di ukuran
+ * judulnya bisa ketutupan di satu ukuran layar dan terlalu turun di ukuran
  * lain. Diukur ulang tiap klik juga menjaga hasilnya tetap benar setelah layar
  * diputar atau jendela diubah ukurannya.
  */
@@ -29,10 +38,13 @@ function scrollToSection(id) {
   const target = document.getElementById(id)
   if (!target) return
 
+  // Hero tidak punya judul; untuk kasus itu tepi section yang dipakai.
+  const anchor = target.querySelector('h2') || target
+
   const header = document.querySelector('header')
   const navHeight = header ? header.getBoundingClientRect().height : 0
   const top = Math.round(
-    target.getBoundingClientRect().top + window.scrollY - navHeight,
+    anchor.getBoundingClientRect().top + window.scrollY - navHeight - HEADING_GAP,
   )
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
