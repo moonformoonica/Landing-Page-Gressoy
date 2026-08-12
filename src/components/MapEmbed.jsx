@@ -9,10 +9,10 @@
  * - Layar sempit: Google menciutkan kartunya sendiri jadi tombol kecil
  *   "Buka di Maps". Diuji di lebar 380, 560, dan 760 — ketiganya tetap ciut,
  *   jadi ambangnya jauh di atas lebar HP dan tidak bisa dipaksa dari luar
- *   (isi iframe beda domain). Karena itu kartu kita sendiri yang dipakai,
- *   dibuat semirip mungkin dengan kartu Google dan ditempel di pojok yang sama
- *   supaya tampilannya setara versi desktop. Ukurannya menutupi penuh tombol
- *   ciut Google di baliknya, jadi tidak ada yang mengintip dari belakang.
+ *   (isi iframe beda domain). Karena itu kartu kita sendiri yang dipakai.
+ *   Ditaruh DI BAWAH peta, bukan menimpanya: di layar HP lebar kartu hampir
+ *   sama dengan lebar peta, jadi kalau ditempel di atasnya ia menutupi hampir
+ *   seluruh peta dan terlihat menumpuk.
  *
  * Angka ratingnya live dari /api/rating, sumbernya halaman Google juga.
  */
@@ -25,7 +25,7 @@ export default function MapEmbed({
   embedSrc,
 }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-white shadow-card">
+    <div className="overflow-hidden rounded-3xl bg-white shadow-card">
       <iframe
         title={`Lokasi ${name}`}
         src={embedSrc}
@@ -38,8 +38,8 @@ export default function MapEmbed({
         className="block w-full"
       />
 
-      {/* Kartu versi layar sempit, meniru kartu bawaan Google */}
-      <div className="absolute left-3 top-3 w-[15.5rem] rounded-lg bg-white p-3 shadow-card sm:w-64 sm:p-4 lg:hidden">
+      {/* Kartu versi layar sempit, isi sama dengan kartu bawaan Google */}
+      <div className="border-t border-gray-100 p-4 lg:hidden">
         <h3 className="text-[15px] font-semibold leading-tight text-gray-900">
           {name}
         </h3>

@@ -19,13 +19,27 @@ const supportsSmoothScroll = () =>
 // Jarak napas antara garis bawah navbar dan judul section setelah mendarat.
 const HEADING_GAP = 30
 
-// Beberapa section minta jarak berbeda. About Us punya dekorasi tinggi
-// (kedelai tercurah, cup & gelas, gambar menuang) yang mengapit judul di kiri
-// dan kanan; kalau judulnya ditempel rapat ke navbar, dekorasi itu ikut
-// terpotong dan section-nya terasa sesak. Angka di sini tinggal diubah kalau
-// jaraknya masih terasa kurang atau kelebihan.
+// Beberapa section minta jarak berbeda, dan hanya pada lebar layar tertentu.
+//
+// About Us: di layar lebar (lg ke atas) dekorasinya — kedelai tercurah, cup &
+// gelas, gambar menuang — mengapit judul di kiri dan kanan, jadi kalau judulnya
+// ditempel rapat ke navbar dekorasi itu ikut terdorong ke luar layar dan
+// section-nya terasa sesak. Di layar sempit dekorasi yang sama mengalir di
+// bawah judul (lihat AboutUsSection: versi desktop `hidden lg:block`, versi
+// sempit `lg:hidden`), jadi ruang tambahan itu tidak dibutuhkan dan justru
+// menyisakan area kosong. Karena itu jarak longgarnya dibatasi ke lg ke atas.
 const HEADING_GAP_KHUSUS = {
-  'about-us': 150,
+  'about-us': { minWidth: 1024, gap: 150 },
+}
+
+// Dihitung saat diklik, bukan sekali di awal, supaya tetap benar setelah layar
+// diputar atau jendela diubah ukurannya.
+function jarakUntuk(id) {
+  const khusus = HEADING_GAP_KHUSUS[id]
+  if (!khusus) return HEADING_GAP
+  return window.matchMedia(`(min-width: ${khusus.minWidth}px)`).matches
+    ? khusus.gap
+    : HEADING_GAP
 }
 
 /**
@@ -52,7 +66,7 @@ function scrollToSection(id) {
 
   // Dihitung ulang tiap dipanggil, bukan sekali di awal: posisinya bisa
   // bergeser selagi animasi berjalan.
-  const gap = HEADING_GAP_KHUSUS[id] ?? HEADING_GAP
+  const gap = jarakUntuk(id)
 
   const posisiTujuan = () => {
     const header = document.querySelector('header')
