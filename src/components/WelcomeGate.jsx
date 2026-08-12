@@ -42,12 +42,15 @@ export default function WelcomeGate({ locked, onEnter }) {
         className="group relative rounded-3xl outline-none focus-visible:ring-4 focus-visible:ring-cream-50/70"
       >
         {/* Float dan scale dipisah ke dua elemen: keduanya memakai transform,
-            kalau ditumpuk di satu elemen yang satu akan menimpa yang lain. */}
+            kalau ditumpuk di satu elemen yang satu akan menimpa yang lain.
+            Kelas drop-shadow bawaan Tailwind juga sengaja tidak dipakai di
+            gambarnya: sama-sama mengatur `filter` dengan animate-logo-glow,
+            jadi salah satunya pasti tertimpa dan nyalanya tidak muncul. */}
         <span className="animate-float-slow block">
           <img
             src={logo}
             alt="Gressoy"
-            className="w-64 max-w-[72vw] object-contain drop-shadow-2xl transition-transform duration-300 group-hover:scale-105 group-active:scale-95 sm:w-80 lg:w-96"
+            className="animate-logo-glow w-64 max-w-[72vw] object-contain transition-transform duration-300 group-hover:scale-105 group-active:scale-95 sm:w-80 lg:w-96"
           />
         </span>
       </button>

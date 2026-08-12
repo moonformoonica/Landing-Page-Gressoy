@@ -7,6 +7,43 @@ const NAV_ITEMS = [
   { id: 'contact-us', label: 'Contact Us' },
 ]
 
+// Safari lama (iOS < 15.4) tidak mengenal bentuk objek pada window.scrollTo.
+// Yang terjadi bukan sekadar "tidak mulus": objeknya dibaca sebagai koordinat
+// kosong, jadi halaman malah melompat ke paling atas. Karena itu bentuk objek
+// hanya dipakai kalau browsernya memang mendukung; kalau tidak, dipakai bentuk
+// dua-argumen yang didukung semua browser.
+const supportsSmoothScroll = () =>
+  typeof document !== 'undefined' &&
+  'scrollBehavior' in document.documentElement.style
+
+/**
+ * Gulung ke sebuah section sampai tepi atasnya persis menempel di bawah navbar.
+ *
+ * Tinggi navbar diukur saat diklik, bukan ditulis tetap, karena navbar lebih
+ * pendek di layar kecil daripada di desktop — kalau dipatok satu angka,
+ * headingnya bisa ketutupan di satu ukuran layar dan terlalu turun di ukuran
+ * lain. Diukur ulang tiap klik juga menjaga hasilnya tetap benar setelah layar
+ * diputar atau jendela diubah ukurannya.
+ */
+function scrollToSection(id) {
+  const target = document.getElementById(id)
+  if (!target) return
+
+  const header = document.querySelector('header')
+  const navHeight = header ? header.getBoundingClientRect().height : 0
+  const top = Math.round(
+    target.getBoundingClientRect().top + window.scrollY - navHeight,
+  )
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  if (supportsSmoothScroll() && !reduceMotion) {
+    window.scrollTo({ top, behavior: 'smooth' })
+  } else {
+    window.scrollTo(0, top)
+  }
+}
+
 export default function Navbar() {
   const [active, setActive] = useState('')
 
@@ -56,9 +93,17 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-sage-500/90 backdrop-blur">
       <nav className="flex w-full flex-wrap items-center justify-center gap-3 px-4 py-2.5 sm:justify-end sm:gap-4 sm:pl-6 sm:pr-5 lg:pl-8 lg:pr-6">
+        {/* Ikut ditangani sendiri, bukan dibiarkan sebagai anchor biasa: anchor
+            biasa menuliskan "#top" ke alamat halaman, dan kalau pengunjung
+            me-refresh dengan alamat itu browser langsung melompat ke Hero —
+            layar sambutan jadi terlewat. */}
         <a
           href="#top"
           aria-label="Kembali ke atas"
+          onClick={(e) => {
+            e.preventDefault()
+            scrollToSection('top')
+          }}
           className="transition-transform duration-300 hover:scale-[1.03]"
         >
           <img
@@ -78,13 +123,7 @@ export default function Navbar() {
                   onClick={(e) => {
                     e.preventDefault()
                     setActive(item.id)
-                    const target = document.getElementById(item.id)
-                   if (target) {
-                      const navHeight = document.querySelector('header').offsetHeight
-                      const targetPosition =
-                        target.getBoundingClientRect().top + window.scrollY - navHeight
-                      window.scrollTo({ top: targetPosition, behavior: 'smooth' })
-                    }
+                    scrollToSection(item.id)
                   }}
                   className={`inline-block rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-all duration-300 sm:px-4 sm:text-sm ${
                     isActive

@@ -60,6 +60,30 @@
   animation: float 8s ease-in-out infinite;
 }
 
+/* Cahaya lembut yang bernapas di sekeliling logo sambutan.
+   Pakai drop-shadow, bukan box-shadow: drop-shadow mengikuti bentuk alpha PNG
+   sehingga cahayanya menempel pada lekuk logo, bukan bikin kotak bercahaya.
+   Lapisan pertama tetap sama sepanjang animasi — itu bayangan jatuh biasa yang
+   memberi kesan mengambang; hanya lapisan kedua (nyala hangat) yang naik-turun,
+   supaya terasa bernapas dan tidak seperti lampu diskotek. */
+@keyframes logo-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 10px 20px rgba(31, 74, 42, 0.3))
+      drop-shadow(0 0 12px rgba(255, 246, 192, 0.45));
+  }
+  50% {
+    filter: drop-shadow(0 10px 20px rgba(31, 74, 42, 0.3))
+      drop-shadow(0 0 28px rgba(255, 246, 192, 0.85));
+  }
+}
+.animate-logo-glow {
+  /* Juga dipakai sebagai keadaan diam kalau animasi dimatikan */
+  filter: drop-shadow(0 10px 20px rgba(31, 74, 42, 0.3))
+    drop-shadow(0 0 16px rgba(255, 246, 192, 0.6));
+  animation: logo-glow 3.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -71,6 +95,10 @@
   }
   .animate-float,
   .animate-float-slow {
+    animation: none;
+  }
+  /* Nyalanya berhenti berdenyut, tapi bayangan & cahayanya tetap ada */
+  .animate-logo-glow {
     animation: none;
   }
 }
