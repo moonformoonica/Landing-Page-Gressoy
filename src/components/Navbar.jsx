@@ -19,6 +19,15 @@ const supportsSmoothScroll = () =>
 // Jarak napas antara garis bawah navbar dan judul section setelah mendarat.
 const HEADING_GAP = 30
 
+// Beberapa section minta jarak berbeda. About Us punya dekorasi tinggi
+// (kedelai tercurah, cup & gelas, gambar menuang) yang mengapit judul di kiri
+// dan kanan; kalau judulnya ditempel rapat ke navbar, dekorasi itu ikut
+// terpotong dan section-nya terasa sesak. Angka di sini tinggal diubah kalau
+// jaraknya masih terasa kurang atau kelebihan.
+const HEADING_GAP_KHUSUS = {
+  'about-us': 150,
+}
+
 /**
  * Gulung ke sebuah section sampai judulnya berhenti sedikit di bawah navbar.
  *
@@ -43,11 +52,13 @@ function scrollToSection(id) {
 
   // Dihitung ulang tiap dipanggil, bukan sekali di awal: posisinya bisa
   // bergeser selagi animasi berjalan.
+  const gap = HEADING_GAP_KHUSUS[id] ?? HEADING_GAP
+
   const posisiTujuan = () => {
     const header = document.querySelector('header')
     const navHeight = header ? header.getBoundingClientRect().height : 0
     return Math.round(
-      anchor.getBoundingClientRect().top + window.scrollY - navHeight - HEADING_GAP,
+      anchor.getBoundingClientRect().top + window.scrollY - navHeight - gap,
     )
   }
 
