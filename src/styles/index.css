@@ -69,19 +69,39 @@
 @keyframes logo-glow {
   0%,
   100% {
-    filter: drop-shadow(0 10px 20px rgba(31, 74, 42, 0.3))
-      drop-shadow(0 0 12px rgba(255, 246, 192, 0.45));
+    filter: drop-shadow(0 10px 20px rgba(31, 74, 42, 0.35))
+      drop-shadow(0 0 14px rgba(255, 250, 215, 0.75))
+      drop-shadow(0 0 30px rgba(247, 200, 92, 0.35));
   }
   50% {
-    filter: drop-shadow(0 10px 20px rgba(31, 74, 42, 0.3))
-      drop-shadow(0 0 28px rgba(255, 246, 192, 0.85));
+    filter: drop-shadow(0 10px 20px rgba(31, 74, 42, 0.35))
+      drop-shadow(0 0 26px rgba(255, 250, 215, 1))
+      drop-shadow(0 0 64px rgba(247, 200, 92, 0.85));
   }
 }
 .animate-logo-glow {
   /* Juga dipakai sebagai keadaan diam kalau animasi dimatikan */
-  filter: drop-shadow(0 10px 20px rgba(31, 74, 42, 0.3))
-    drop-shadow(0 0 16px rgba(255, 246, 192, 0.6));
-  animation: logo-glow 3.4s ease-in-out infinite;
+  filter: drop-shadow(0 10px 20px rgba(31, 74, 42, 0.35))
+    drop-shadow(0 0 20px rgba(255, 250, 215, 0.85))
+    drop-shadow(0 0 46px rgba(247, 200, 92, 0.6));
+  animation: logo-glow 2.8s ease-in-out infinite;
+}
+
+/* Halo besar di belakang logo ikut bernapas dengan irama yang sama, supaya
+   yang menyala terasa area di sekelilingnya, bukan cuma garis tepi logo.
+   Yang dianimasikan hanya opacity: transform-nya sudah dipakai Tailwind untuk
+   menengahkan halo, kalau ikut dianimasikan posisinya akan meleset. */
+@keyframes logo-halo {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.animate-logo-halo {
+  animation: logo-halo 2.8s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -99,6 +119,9 @@
   }
   /* Nyalanya berhenti berdenyut, tapi bayangan & cahayanya tetap ada */
   .animate-logo-glow {
+    animation: none;
+  }
+  .animate-logo-halo {
     animation: none;
   }
 }

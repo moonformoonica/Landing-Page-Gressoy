@@ -32,7 +32,7 @@ export default function WelcomeGate({ locked, onEnter }) {
       {/* Semburat terang di belakang logo biar bagian tengah tidak datar */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cream-100/35 blur-3xl sm:h-[34rem] sm:w-[34rem]"
+        className="animate-logo-halo pointer-events-none absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cream-100/55 blur-3xl sm:h-[34rem] sm:w-[34rem]"
       />
 
       <button

@@ -41,19 +41,76 @@ function scrollToSection(id) {
   // Hero tidak punya judul; untuk kasus itu tepi section yang dipakai.
   const anchor = target.querySelector('h2') || target
 
-  const header = document.querySelector('header')
-  const navHeight = header ? header.getBoundingClientRect().height : 0
-  const top = Math.round(
-    anchor.getBoundingClientRect().top + window.scrollY - navHeight - HEADING_GAP,
-  )
+  // Dihitung ulang tiap dipanggil, bukan sekali di awal: posisinya bisa
+  // bergeser selagi animasi berjalan.
+  const posisiTujuan = () => {
+    const header = document.querySelector('header')
+    const navHeight = header ? header.getBoundingClientRect().height : 0
+    return Math.round(
+      anchor.getBoundingClientRect().top + window.scrollY - navHeight - HEADING_GAP,
+    )
+  }
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  if (supportsSmoothScroll() && !reduceMotion) {
-    window.scrollTo({ top, behavior: 'smooth' })
-  } else {
-    window.scrollTo(0, top)
+  if (!supportsSmoothScroll() || reduceMotion) {
+    window.scrollTo(0, posisiTujuan())
+    return
   }
+
+  window.scrollTo({ top: posisiTujuan(), behavior: 'smooth' })
+
+  // Gerakan mulus menuju satu angka yang dikunci saat animasi dimulai. Kalau di
+  // tengah jalan ada gambar/video di atas target yang baru selesai dimuat,
+  // seluruh isi halaman bergeser turun dan angka tadi jadi tidak berlaku lagi —
+  // hasilnya berhenti sebelum sampai. Jadi setelah gerakannya diam, posisinya
+  // dihitung ulang dan dikoreksi kalau meleset.
+  //
+  // Koreksi dibatalkan begitu pengunjung menggulung/menyentuh sendiri, supaya
+  // halaman tidak "melawan" tangan mereka.
+  let dibatalkan = false
+  const batalkan = () => {
+    dibatalkan = true
+  }
+  const INTERUPSI = ['wheel', 'touchstart', 'keydown']
+  INTERUPSI.forEach((e) =>
+    window.addEventListener(e, batalkan, { passive: true }),
+  )
+
+  const selesai = () => {
+    window.clearInterval(pemantau)
+    INTERUPSI.forEach((e) => window.removeEventListener(e, batalkan))
+  }
+
+  const mulai = Date.now()
+  let posisiTerakhir = window.scrollY
+  let hitunganDiam = 0
+
+  const pemantau = window.setInterval(() => {
+    // Batas waktu: jangan memantau selamanya kalau animasinya tidak pernah diam.
+    if (dibatalkan || Date.now() - mulai > 3000) {
+      selesai()
+      return
+    }
+
+    const sekarang = window.scrollY
+    hitunganDiam = Math.abs(sekarang - posisiTerakhir) < 1 ? hitunganDiam + 1 : 0
+    posisiTerakhir = sekarang
+    if (hitunganDiam < 2) return
+
+    selesai()
+    const seharusnya = posisiTujuan()
+    if (Math.abs(window.scrollY - seharusnya) <= 2) return
+
+    // Koreksinya harus instan. Kalau dibiarkan, window.scrollTo mewarisi
+    // `scroll-behavior: smooth` dari CSS halaman dan koreksinya ikut
+    // beranimasi — animasi kedua yang bisa meleset lagi dengan sebab yang sama.
+    const root = document.documentElement
+    const gaya = root.style.scrollBehavior
+    root.style.scrollBehavior = 'auto'
+    window.scrollTo(0, seharusnya)
+    root.style.scrollBehavior = gaya
+  }, 100)
 }
 
 export default function Navbar() {
