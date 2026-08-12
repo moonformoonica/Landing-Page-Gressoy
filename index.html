@@ -23,17 +23,31 @@
       property="og:description"
       content="GresSOY by Gressoy Indonesia - Susu kedelai dan plant-based dessert asli Purwokerto, 100% tidak langu, 16+ varian rasa, pemanis alami rendah kalori. Order via Gofood, Grabfood, ShopeeFood."
     />
+    <!--
+      Banner pratinjau link. Harus 1200x630 (rasio 1,91:1): itu ukuran yang
+      dipakai WhatsApp/Facebook/LINE untuk menampilkan gambar LEBAR di atas
+      judul. Sebelumnya di sini dipasang favicon 512x512; gambar persegi
+      membuat semua platform jatuh ke mode kartu kecil — gambarnya cuma jadi
+      thumbnail mungil di samping judul, bukan banner.
+    -->
     <meta
       property="og:image"
-      content="https://gressoyindonesia.vercel.app/favicon.png"
+      content="https://gressoyindonesia.vercel.app/og-banner.png"
     />
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta
+      property="og:image:alt"
+      content="Logo GresSOY — Plant Based Milk, susu kedelai asli Purwokerto"
+    />
     <meta property="og:url" content="https://gressoyindonesia.vercel.app/" />
     <meta property="og:locale" content="id_ID" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
+    <!-- summary_large_image: kartu dengan gambar lebar. Kalau tetap "summary",
+         X/Twitter memaksa thumbnail kecil walau gambarnya sudah 1200x630. -->
+    <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
       content="Gressoy Indonesia - Susu Kedelai & Plant Based Dessert Pertama di Purwokerto"
@@ -44,7 +58,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://gressoyindonesia.vercel.app/favicon.png"
+      content="https://gressoyindonesia.vercel.app/og-banner.png"
     />
     <!-- Judul: IM Fell Double Pica · Teks: IM Fell DW Pica (serif klasik, nuansa vintage senada maskot). -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
